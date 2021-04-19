@@ -65,7 +65,7 @@ namespace SAO.LoadingService
         {
             FileStream myFile = new FileStream(filePath, FileMode.Open, FileAccess.ReadWrite);
             BinaryFormatter formatter = new BinaryFormatter();
-            AccountInfo myInfo = (AccountInfo)formatter.Deserialize(myFile);
+            AccountInfo myInfo = null; // = (AccountInfo)formatter.Deserialize(myFile);
             myFile.Close();
             myFile.Dispose();
             return myInfo;
@@ -83,7 +83,7 @@ namespace SAO.LoadingService
         {
             FileStream myFile = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
             BinaryFormatter formatter = new BinaryFormatter();
-            formatter.Serialize(myFile, myInfo);
+            //formatter.Serialize(myFile, myInfo);
             myFile.Close();
             myFile.Dispose();
         }
@@ -102,7 +102,7 @@ namespace SAO.LoadingService
         public static void UpdateInfo(AccountInfo myInfo, FileStream myFile)
         {
             BinaryFormatter formatter = new BinaryFormatter();
-            formatter.Serialize(myFile, myInfo);
+            //formatter.Serialize(myFile, myInfo);
             myFile.Close();
             myFile.Dispose();
         }

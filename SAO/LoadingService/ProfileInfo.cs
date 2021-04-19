@@ -152,7 +152,7 @@ namespace SAO.LoadingService
         {
             FileStream myFile = new FileStream(filePath, FileMode.Open, FileAccess.ReadWrite);
             BinaryFormatter formatter = new BinaryFormatter();
-            ProfileInfo myInfo = (ProfileInfo)formatter.Deserialize(myFile);
+            ProfileInfo myInfo = null;// = (ProfileInfo)formatter.Deserialize(myFile);
             //test = new System.Runtime.Serialization.Json.DataContractJsonSerializer(typeof(ProfileInfo));
             myFile.Close();
             myFile.Dispose();
@@ -162,7 +162,7 @@ namespace SAO.LoadingService
         {
             FileStream myFile = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
             BinaryFormatter formatter = new BinaryFormatter();
-            formatter.Serialize(myFile, myInfo);
+            //formatter.Serialize(myFile, myInfo);
             myFile.Close();
             myFile.Dispose();
         }

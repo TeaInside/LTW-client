@@ -77,7 +77,7 @@ namespace SAO.GameObjects.Heroes
                 ThereIsConstants.Path.DoubleSlash + FirstNameOfFile + 
                 HeroID + EndNameOfFile, 
                 FileMode.OpenOrCreate, FileAccess.Write);
-            formatter.Serialize(myFile, this);
+            //formatter.Serialize(myFile, this);
             myFile.Close();
             myFile.Dispose();
         }
@@ -261,7 +261,7 @@ namespace SAO.GameObjects.Heroes
                 ThereIsConstants.Path.DoubleSlash + FirstNameOfFile +
                 heroID + EndNameOfFile,
                 FileMode.Open, FileAccess.Read);
-            HeroSerialize heroSerialize = (HeroSerialize)formatter.Deserialize(myFile);
+            HeroSerialize heroSerialize = null; // = (HeroSerialize)formatter.Deserialize(myFile);
             myFile.Close();
             myFile.Dispose();
             return heroSerialize;

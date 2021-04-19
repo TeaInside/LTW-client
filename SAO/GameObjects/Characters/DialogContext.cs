@@ -61,7 +61,7 @@ namespace SAO.GameObjects.Characters
                 DialogCaption + ".bin", FileMode.OpenOrCreate, FileAccess.Read);
             BinaryFormatter formatter = new BinaryFormatter();
 #pragma warning disable 618
-            DialogContext myCon = (DialogContext)formatter.Deserialize(myFile);
+            DialogContext myCon = null; // = (DialogContext)formatter.Deserialize(myFile);
 #pragma warning restore 618
             context = myCon.Context;
             dialogCaption = myCon.DialogCaption;
@@ -147,7 +147,7 @@ namespace SAO.GameObjects.Characters
                 dialogCaption + ".bin", FileMode.OpenOrCreate, FileAccess.Write);
             BinaryFormatter formatter = new BinaryFormatter();
 #pragma warning disable 618
-            formatter.Serialize(myFile, this);
+            //formatter.Serialize(myFile, this);
 #pragma warning restore 618
             myFile.Close();
             myFile.Dispose();
@@ -181,7 +181,7 @@ namespace SAO.GameObjects.Characters
                 DialogName + ".bin", FileMode.OpenOrCreate, FileAccess.Read);
             BinaryFormatter formatter = new BinaryFormatter();
 #pragma warning disable 618
-            DialogContext myCon = (DialogContext)formatter.Deserialize(myFile);
+            DialogContext myCon = null;// = (DialogContext)formatter.Deserialize(myFile);
 #pragma warning restore 618
             myFile.Close();
             myFile.Dispose();
