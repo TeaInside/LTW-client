@@ -58,16 +58,16 @@
         <HintPath>..\..\..\..\..\..\..\..\usr\share\dotnet\sdk\5.0.201\System.Drawing.Common.dll</HintPath>
       </Reference>
 	  <Reference Include="FontStashSharp">
-        <HintPath>..\refrences\FontStashSharp.MonoGame.dll</HintPath>
+        <HintPath>..\references\FontStashSharp.MonoGame.dll</HintPath>
       </Reference>
 	  <Reference Include="Cyotek.Drawing.BitmapFont">
-        <HintPath>..\refrences\Cyotek.Drawing.BitmapFont.dll</HintPath>
+        <HintPath>..\references\Cyotek.Drawing.BitmapFont.dll</HintPath>
       </Reference>
 	  <Reference Include="StbImageSharp">
-        <HintPath>..\refrences\StbImageSharp.dll</HintPath>
+        <HintPath>..\references\StbImageSharp.dll</HintPath>
       </Reference>
 	  <Reference Include="StbTrueTypeSharp">
-        <HintPath>..\refrences\StbTrueTypeSharp.dll</HintPath>
+        <HintPath>..\references\StbTrueTypeSharp.dll</HintPath>
       </Reference>
     </ItemGroup>
     <ItemGroup>

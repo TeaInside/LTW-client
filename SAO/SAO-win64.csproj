@@ -1,80 +1,88 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
-    <PublishReadyToRun>false</PublishReadyToRun>
-	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
-	<PublishSingleFile>true</PublishSingleFile>
-    <TieredCompilation>false</TieredCompilation>
-    <UseWindowsForms>true</UseWindowsForms>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
-    <ApplicationIcon>Icon.ico</ApplicationIcon>
-    <AssemblyVersion>2.1.1.25</AssemblyVersion>
-    <FileVersion>2.1.1.25</FileVersion>
-    <Authors>wotoTeam</Authors>
-    <Product>SAO-LT</Product>
-    <Description>Sword Art Online : The Last Testament</Description>
-    <Copyright>Copyright © wotoTeam  2021</Copyright>
-    <Company>woto_team</Company>
-    <PackageLicenseExpression>Under The Lisence of woto_team Corporation</PackageLicenseExpression>
-  </PropertyGroup>
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net5.0</TargetFramework>
+		<PublishSingleFile>true</PublishSingleFile>
+		<SelfContained>true</SelfContained>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<PublishTrimmed>true</PublishTrimmed>
+		<PublishReadyToRun>true</PublishReadyToRun>
+		<AssemblyName>SAO</AssemblyName>
+		<RootNamespace>SAO</RootNamespace>
+		<NeutralLanguage>en-US</NeutralLanguage>
+    </PropertyGroup>
+    <PropertyGroup>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <ApplicationIcon>Icon.ico</ApplicationIcon>
+		<AssemblyVersion>2.1.1.25</AssemblyVersion>
+		<FileVersion>2.1.1.25</FileVersion>
+		<Authors>wotoTeam</Authors>
+		<Product>SAO-LT</Product>
+		<Description>Sword Art Online : The Last Testament</Description>
+		<Copyright>Copyright © wotoTeam  2021</Copyright>
+		<Company>woto_team</Company>
+		<PackageLicenseExpression>Under The Lisence of woto_team Corporation</PackageLicenseExpression>
+    </PropertyGroup>
 	<PropertyGroup>
+		<!--
+			define the __WINDOWS__ Constant in order to use it in the
+			code as: 
+			#if __WINDOWS__
+				....
+			#endif
+			===================================================================
+			please don't undefine this constant.
+		-->
 		<DefineConstants>__WINDOWS__</DefineConstants>
 	</PropertyGroup>
-  <ItemGroup>
-    <TrimmerRootAssembly Include="Microsoft.Xna.Framework.Content.ContentTypeReader" Visible="false" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.0.1641" />
-    <PackageReference Include="MonoGame.Framework.WindowsDX" Version="3.8.0.1641" />
-    <PackageReference Include="Octokit" Version="0.50.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <MonoGameContentReference Include="Content\Content.mgcb" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\WotoProvider\WotoProvider.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Update="Properties\Settings.Designer.cs">
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controls\Animation\AnimationCompanies\" />
-    <Folder Include="Controls\GameGraphics\XDrawing\" />
-    <Folder Include="GameObjects\LiveBattle\" />
-    <Folder Include="GameObjects\MapObjects\" />
-    <Folder Include="GameObjects\NPC\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="SandBox\ErrorSandBoxes\ConnectionClosedSandBox.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Update="SandBox\ErrorSandBoxes\LogedOutDoneSandBox.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Update="SandBox\ErrorSandBoxes\LogOutWarningSandBox.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Update="SandBox\ErrorSandBoxes\UserAlreadyExistSandBox.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Update="SandBox\ErrorSandBoxes\ProfileWrongSandBox.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Update="SandBox\ErrorSandBoxes\ProfileLoadFailedSandBox.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
+    <ItemGroup>
+        <None Remove="Icon.ico" />
+        <None Remove="Icon.bmp" />
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Include="Icon.ico" />
+		<EmbeddedResource Include="Icon.bmp" />
+    </ItemGroup>
+    <ItemGroup>
+        <TrimmerRootAssembly Include="Microsoft.Xna.Framework.Content.ContentTypeReader" Visible="false" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.0.1641" />
+        <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.0.1641" />
+    </ItemGroup>
+    <ItemGroup>
+      <Reference Include="Octokit, Version=0.50.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>..\octokit\0.50.0\lib\netstandard2.0\Octokit.dll</HintPath>
+      </Reference>
+	  <Reference Include="FontStashSharp">
+        <HintPath>..\references\FontStashSharp.MonoGame.dll</HintPath>
+      </Reference>
+	  <Reference Include="Cyotek.Drawing.BitmapFont">
+        <HintPath>..\references\Cyotek.Drawing.BitmapFont.dll</HintPath>
+      </Reference>
+	  <Reference Include="StbImageSharp">
+        <HintPath>..\references\StbImageSharp.dll</HintPath>
+      </Reference>
+	  <Reference Include="StbTrueTypeSharp">
+        <HintPath>..\references\StbTrueTypeSharp.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="..\..\..\SAO\SAO\Content\obj\DesktopGL\Content\.mgstats">
+        <Link>Content\obj\DesktopGL\Content\.mgstats</Link>
+      </Content>
+    </ItemGroup>
+    <ItemGroup>
+		<Folder Include="..\..\..\SAO\SAO\Content\bin\DesktopGL\Content">
+			<Link>Content\bin\DesktopGL\Content</Link>
+		</Folder>
+      <Folder Include="Controls\Animation\AnimationCompanies" />
+      <Folder Include="Controls\GameGraphics\XDrawing" />
+      <Folder Include="GameObjects\LiveBattle" />
+      <Folder Include="GameObjects\MapObjects" />
+      <Folder Include="GameObjects\NPC" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\WotoProvider\WotoProvider.csproj" />
+    </ItemGroup>
 </Project>
