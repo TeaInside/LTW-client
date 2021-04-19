@@ -37,6 +37,7 @@ namespace SAO.GameObjects.Characters
         {
             InitializeComponent();
         }
+		#if (OLD_SAO)
         /// <summary>
         /// Get The Character Image which should be displayed in
         /// <see cref="DialogBoxProvider"/> class.
@@ -48,5 +49,6 @@ namespace SAO.GameObjects.Characters
                 ThereIsConstants.Path.DoubleSlash +
                 MyRes.GetString(strName:CharacterName + ImageEndFileName));
         }
+		#endif
     }
 }

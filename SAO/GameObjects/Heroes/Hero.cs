@@ -219,6 +219,7 @@ namespace SAO.GameObjects.Heroes
         {
             return new Unit(); // Not Compeleted yet.
         }
+		#if (OLD_SAO)
         public Image GetHeroImage(HeroImageTypes type)
         {
             switch (type)
@@ -237,7 +238,9 @@ namespace SAO.GameObjects.Heroes
             }
             
         }
-        public BattlingHero ConvertToBattlingHero()
+        
+		#endif
+		public BattlingHero ConvertToBattlingHero()
         {
             // TODO.
             return null;

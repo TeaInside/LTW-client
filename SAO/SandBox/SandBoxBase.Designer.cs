@@ -3,13 +3,11 @@
 // This file is subject to the terms and conditions defined in
 // file 'LICENSE', which is part of the source code.
 
-using System.Drawing;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SAO.Security;
 using SAO.Controls.Moving;
 using SAO.Controls.Elements;
-using XColor = Microsoft.Xna.Framework.Color;
 
 namespace SAO.SandBox
 {
@@ -34,7 +32,7 @@ namespace SAO.SandBox
             //movements:
             this.ChangeMovements(ElementMovements.VerticalHorizontalMovements);
             //colors:
-            this._flat.ChangeBackColor(new XColor(XColor.Black, 0.7f));
+            this._flat.ChangeBackColor(new Color(Color.Black, 0.7f));
             //enableds:
             //texts:
             //images:
@@ -122,28 +120,6 @@ namespace SAO.SandBox
             this._flat?.ChangeSize(w, h);
         }
         /// <summary>
-        /// change the size of this sandbox.
-        /// </summary>
-        /// <param name="size">
-        /// the <see cref="Size"/> value which represent the 
-        /// new size of this sandbox.
-        /// </param>
-        public override void ChangeSize(in Size size)
-        {
-            this._flat?.ChangeSize(size);
-        }
-        /// <summary>
-        /// change the size of this sandbox.
-        /// </summary>
-        /// <param name="size">
-        /// the <see cref="SizeF"/> value which represent the 
-        /// new size of this sandbox.
-        /// </param>
-        public override void ChangeSize(in SizeF size)
-        {
-            this._flat?.ChangeSize(size);
-        }
-        /// <summary>
         /// change the location of this sandbox.
         /// </summary>
         /// <param name="x">
@@ -197,7 +173,7 @@ namespace SAO.SandBox
         /// the <see cref="XColor"/> value which will be the
         /// default fore color of this sandbox.
         /// </param>
-        public override void ChangeForeColor(in XColor color)
+        public override void ChangeForeColor(in Color color)
         {
             this._flat?.ChangeForeColor(color);
         }
@@ -267,7 +243,7 @@ namespace SAO.SandBox
         {
             return null;
         }
-        protected override sealed Texture2D GetBackGroundTexture(XColor color)
+        protected override sealed Texture2D GetBackGroundTexture(Color color)
         {
             return null;
         }

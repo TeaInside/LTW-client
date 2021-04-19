@@ -21,22 +21,28 @@ namespace SAO.GameObjects.UGW
             //---------------------------------------------
             //news:
             this.MyRes = new WotoRes(typeof(FontManager));
+			#if (OLD_SAO)
             if (Universe.IsWindows)
             {
                 this._collection = new PrivateFontCollection();   
             }
+			#endif
             this._ranges = GetRange();
             //---------------------------------------------
             //collections:
             // TODO:
+			#if (OLD_SAO)
             this._collection?.AddFontFile(FoDir + this.MyRes.GetString(SAOFontFileNameInRes).GetValue());
             this._collection?.AddFontFile(FoDir + this.MyRes.GetString(OldStoryFileNameInRes).GetValue());
+			#endif
             //---------------------------------------------
         }
+		#if (OLD_SAO)
         private Font BuildFont(FontFamily family, float size, FontStyle style)
         {
             return new Font(family, size, style);
         }
+		#endif
         /// <summary>
         /// 8 - 25 => Spacing: 0.0;
         /// 26 => Spacing : 1.2;
@@ -83,10 +89,12 @@ return new[]
             {
                 this.MyRes = null;
             }
+			#if (OLD_SAO)
             if (this._collection != null)
             {
                 this._collection = null;
             }
+			#endif
         }
         public bool Contains(char c)
         {

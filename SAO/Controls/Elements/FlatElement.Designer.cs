@@ -3,11 +3,6 @@
 // This file is subject to the terms and conditions defined in
 // file 'LICENSE', which is part of the source code.
 
-using System.IO;
-using System.Drawing;
-using System.Drawing.Text;
-using System.Drawing.Imaging;
-using System.Drawing.Drawing2D;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SAO.Client;
@@ -17,8 +12,6 @@ using SAO.Constants;
 using SAO.Controls.Moving;
 using XColor = Microsoft.Xna.Framework.Color;
 using XPoint = Microsoft.Xna.Framework.Point;
-using DFont  = System.Drawing.Font;
-using DColor = System.Drawing.Color;
 
 namespace SAO.Controls.Elements
 {
@@ -30,17 +23,6 @@ namespace SAO.Controls.Elements
         {
             //---------------------------------------------
             //news:
-            if (Universe.IsWindows)
-            {
-                this.StringFormat = new StringFormat()
-                {
-                    LineAlignment   = StringAlignment.Center,
-                    Alignment       = StringAlignment.Center,
-                    FormatFlags     = StringFormatFlags.LineLimit,
-                    HotkeyPrefix    = HotkeyPrefix.Show,
-                    Trimming        = StringTrimming.EllipsisCharacter,
-                };
-            }
             if (!this.IsBarren)
             {
                 this.Manager = new ElementManager(this);
@@ -173,24 +155,6 @@ namespace SAO.Controls.Elements
                 this.ImageSizeModeRender();
             }
         }
-        public override void ChangeSize(in Size size)
-        {
-            base.ChangeSize(in size);
-            this.ChangeTextLocation();
-            if (this.Image != null)
-            {
-                this.ImageSizeModeRender();
-            }
-        }
-        public override void ChangeSize(in SizeF size)
-        {
-            base.ChangeSize(in size);
-            this.ChangeTextLocation();
-            if (this.Image != null)
-            {
-                this.ImageSizeModeRender();
-            }
-        }
         public override void ChangeLocation(in float x, in float y)
         {
             base.ChangeLocation(in x, in y);
@@ -258,7 +222,6 @@ namespace SAO.Controls.Elements
                 g.DrawPolygon(new Pen(DColor.WhiteSmoke, 1.25f), unlimitedPointWorks);
                 i.Save(@"C:\Users\mrwoto\Programming\Project\SAO\SAO_IMAGES\f_270220212252.bin", ImageFormat.Png);
             }
-#endif
             if (this.Text != null && this.Text.IsHealthy())
             {
                 if (this.Text.HasSpecial())
@@ -281,9 +244,14 @@ namespace SAO.Controls.Elements
                     return t;
                 }
             }
+#endif
             return null;
         }
-        protected override Texture2D GetBackGroundTexture(XColor color)
+        
+		
+		
+		
+		protected override Texture2D GetBackGroundTexture(XColor color)
         {
             if (color != XColor.Transparent)
             {
@@ -309,6 +277,10 @@ namespace SAO.Controls.Elements
             }
             return null;
         }
+
+
+
+
         protected override void UpdateGraphics()
         {
             ;
@@ -343,34 +315,6 @@ namespace SAO.Controls.Elements
         #endregion
         //-------------------------------------------------
         #region Set Method's Region
-        public void ChangeTextAlignment(StringAlignment alignment)
-        {
-            if (this.StringFormat != null && this.StringFormat.Alignment != alignment)
-            {
-                this.StringFormat.Alignment = alignment;
-            }
-        }
-        public void ChangeLineAlignment(StringAlignment alignment)
-        {
-            if (this.StringFormat != null && this.StringFormat.LineAlignment != alignment)
-            {
-                this.StringFormat.LineAlignment = alignment;
-            }
-        }
-        public void ChangeTextTrimming(StringTrimming trimming)
-        {
-            if (this.StringFormat != null && this.StringFormat.Trimming != trimming)
-            {
-                this.StringFormat.Trimming = trimming;
-            }
-        }
-        public void ChangeHotkeyPrefix(HotkeyPrefix prefix)
-        {
-            if (this.StringFormat != null && this.StringFormat.HotkeyPrefix != prefix)
-            {
-                this.StringFormat.HotkeyPrefix = prefix;
-            }
-        }
         public void ChangeAlignmation(StringAlignmation alignmation)
         {
             if (this.Alignmation != alignmation)
@@ -382,19 +326,6 @@ namespace SAO.Controls.Elements
         public void ChangeForeColor(in XColor color, in float w)
         {
             base.ChangeForeColor(color);
-            this.ChangeTextColor(DColor.FromArgb(color.A, color.R, color.G, color.B), w);
-        }
-        public void ChangeTextColor(DColor _d_color, float width)
-        {
-            if (Universe.IsWindows)
-            {
-                this.PaintColors[BASE_INDEX] = _d_color;
-                this.ChangePaintParams(width);   
-            }
-        }
-        public void ChangeTextWidth(float width)
-        {
-            this.ChangePaintParams(width);
         }
 
         private void ChangeTextLocation()
@@ -436,33 +367,11 @@ namespace SAO.Controls.Elements
                     break;
             }
         }
-        private void ChangePaintParams(float w)
-        {
-            if (this.PaintPens[BASE_INDEX] != null)
-            {
-                if (this.PaintPens[BASE_INDEX].Color != this.PaintColors[BASE_INDEX])
-                {
-                    this.PaintPens[BASE_INDEX]?.Dispose();
-                    this.PaintPens[BASE_INDEX] = new Pen(this.PaintColors[BASE_INDEX], w);
-                }
-            }
-            if (this.PaintBrushes[BASE_INDEX] != null)
-            {
-                if (this.PaintBrushes[BASE_INDEX].Color != this.PaintColors[BASE_INDEX])
-                {
-                    this.PaintBrushes[BASE_INDEX]?.Dispose();
-                    this.PaintBrushes[BASE_INDEX] = new SolidBrush(this.PaintColors[BASE_INDEX]);
-                }
-            }
-        }
-        #endregion
+		
+		#endregion
         //-------------------------------------------------
         #region Get Method's Region
-        protected virtual DFont GetFont()
-        {
-            var f = FontManager.GetFont(GameObjects.UGW.SAO_Fonts.sao_tt_bold, 16.5f);
-            return f;
-        }
+		
         #endregion
         //-------------------------------------------------
     }

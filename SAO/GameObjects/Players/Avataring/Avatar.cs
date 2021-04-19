@@ -91,6 +91,7 @@ namespace SAO.GameObjects.Players.Avataring
                     return StrongString.Empty;
             }
         }
+		#if (OLD_SAO)
         /// <summary>
         /// return the avatar Image of the player
         /// by the format.
@@ -128,7 +129,10 @@ namespace SAO.GameObjects.Players.Avataring
             }
             return myImage;
         }
-        /// <summary>
+        
+		#endif
+		
+		/// <summary>
         /// get the number, indicating the avatar's index.
         /// before use this for comparing two avatar, please
         /// check the equality of the avatars.

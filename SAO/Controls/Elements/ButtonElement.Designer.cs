@@ -4,7 +4,6 @@
 // file 'LICENSE', which is part of the source code.
 
 using System;
-using System.Drawing;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -13,7 +12,6 @@ using SAO.Security;
 using SAO.Controls.Moving;
 using XColor = Microsoft.Xna.Framework.Color;
 using XRectangle = Microsoft.Xna.Framework.Rectangle;
-using DColor = System.Drawing.Color;
 
 namespace SAO.Controls.Elements
 {
@@ -194,14 +192,7 @@ namespace SAO.Controls.Elements
         {
             this._flat?.ChangeSize(in w, in h);
         }
-        public override void ChangeSize(in Size size)
-        {
-            this._flat?.ChangeSize(in size);
-        }
-        public override void ChangeSize(in SizeF size)
-        {
-            this._flat?.ChangeSize(in size);
-        }
+
         public override void ChangeLocation(in float x, in float y)
         {
             this.RealPosition = new(x, y);
@@ -300,14 +291,6 @@ namespace SAO.Controls.Elements
         public void ChangeForeColor(XColor color, float w)
         {
             this._flat?.ChangeForeColor(color, w);
-        }
-        public void ChangeTextColor(DColor _d_color, float width)
-        {
-            this._flat?.ChangeTextColor(_d_color, width);
-        }
-        public void ChangeTextWidth(float width)
-        {
-            this._flat?.ChangeTextWidth(width);
         }
         public void ChangeBorder(ButtonColors color)
         {

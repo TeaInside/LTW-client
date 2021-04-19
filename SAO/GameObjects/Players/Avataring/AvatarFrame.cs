@@ -60,6 +60,8 @@ namespace SAO.GameObjects.Players.Avataring
         {
             return ((int)FrameType).ToString().ToStrong();
         }
+
+		#if (OLD_SAO)
         public Image GetImage(AvatarFormat format)
         {
             Image myImage = null;
@@ -89,7 +91,9 @@ namespace SAO.GameObjects.Players.Avataring
             }
             return myImage;
         }
-        public float GetXCost()
+        #endif
+		
+		public float GetXCost()
         {
             switch (FrameType)
             {

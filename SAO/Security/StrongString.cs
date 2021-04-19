@@ -565,6 +565,8 @@ namespace SAO.Security
                 }
             }
         }
+
+		#if (OLD_SAO)
         public SizeF Measure(Font f, Graphics g, float minWidth, float maxWidth)
         {
             int lines;
@@ -582,7 +584,9 @@ namespace SAO.Security
                 return (lines + 1) * f.Height;
             }
         }
-        /// <summary>
+        #endif
+		
+		/// <summary>
         /// check if this <see cref="StrongString"/>'s <see cref="Length"/>
         /// is equal to 0 or not.
         /// </summary>

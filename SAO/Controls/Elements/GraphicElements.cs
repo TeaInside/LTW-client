@@ -4,7 +4,6 @@
 // file 'LICENSE', which is part of the source code.
 
 using System;
-using System.Drawing;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
@@ -18,10 +17,8 @@ using SAO.Controls.Moving;
 using SAO.GameObjects.UGW;
 using SAO.GameObjects.WMath;
 using SAO.GameObjects.Resources;
-using XColor     = Microsoft.Xna.Framework.Color;
 using XRectangle = Microsoft.Xna.Framework.Rectangle;
 using XPoint     = Microsoft.Xna.Framework.Point;
-using DColor     = System.Drawing.Color;
 
 namespace SAO.Controls.Elements
 {
@@ -114,12 +111,9 @@ namespace SAO.Controls.Elements
         /// null.
         /// </summary>
         protected virtual Texture2D BackGroundImage { get; set; }
-        public virtual ListW<Pen> PaintPens { get; set; }
-        public virtual ListW<SolidBrush> PaintBrushes { get; set; }
-        public virtual ListW<DColor> PaintColors { get; set; }
-        public virtual XColor ForeColor { get; set; }
-        public virtual XColor BackGroundColor { get; set; } = XColor.Transparent;
-        public virtual XColor Tint { get; set; } = XColor.White;
+        public virtual Color ForeColor { get; set; }
+        public virtual Color BackGroundColor { get; set; } = Color.Transparent;
+        public virtual Color Tint { get; set; } = Color.White;
         public virtual Vector2 LastPoint { get; set; }
         /// <summary>
         /// the real position of this element on its owner.

@@ -10,7 +10,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SAO.Security;
 using SAO.Controls.Elements;
-using Image = System.Drawing.Image;
 
 namespace SAO.Constants
 {
@@ -73,29 +72,8 @@ namespace SAO.Constants
             }
             return _v;
         }
-        /// <summary>
-        /// convert an <see cref="Image"/> to a <see cref="Texture2D"/>.
-        /// </summary>
-        /// <param name="image">
-        /// the image value.
-        /// </param>
-        /// <returns>
-        /// the <see cref="Texture2D"/> value of this image.
-        /// </returns>
-        public static Texture2D ToTexture2D(this Image image)
-        {
-            if (image == null)
-            {
-                return null;
-            }
-            Texture2D t;
-            using (var m = new MemoryStream())
-            {
-                image.Save(m, ImageFormat.Png);
-                t = Texture2D.FromStream(GraphicElements.BigFather.GraphicsDevice, m);
-            }
-            return t;
-        }
-    }
+		
+	
+	}
 
 }

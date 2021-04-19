@@ -247,7 +247,7 @@ namespace SAO.GameObjects.Heroes
             return myString;
         }
 
-
+		#if (OLD_SAO)
         /// <summary>
         /// Getting the 64x64 Image for
         /// common skills and 62x56 Image for uncommon.
@@ -269,7 +269,10 @@ namespace SAO.GameObjects.Heroes
             }
             return null;
         }
-        /// <summary>
+        #endif
+		
+		
+		/// <summary>
         /// You should use this method to set the 
         /// info of this skill from the
         /// server.

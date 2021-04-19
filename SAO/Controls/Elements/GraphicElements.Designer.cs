@@ -3,7 +3,6 @@
 // This file is subject to the terms and conditions defined in
 // file 'LICENSE', which is part of the source code.
 
-using System.Drawing;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
@@ -31,9 +30,6 @@ namespace SAO.Controls.Elements
         {
             //----------------------------------
             //News:
-            this.PaintColors = new ListW<Color>();
-            this.PaintPens = new ListW<Pen>();
-            this.PaintBrushes = new ListW<SolidBrush>();
             //----------------------------------
             //Names:
             //TabIndexes
@@ -41,12 +37,6 @@ namespace SAO.Controls.Elements
             //Sizes:
             //Locations:
             //Colors:
-            if (Universe.IsWindows)
-            {
-                this.PaintColors.Add(Color.Black);
-                this.PaintPens.Add(new Pen(this.PaintColors[BASE_INDEX], DEFAULT_PEN_W));
-                this.PaintBrushes.Add(new SolidBrush(this.PaintColors[BASE_INDEX]));   
-            }
             //ComboBoxes:
             //Enableds:
             //Texts:
@@ -895,18 +885,10 @@ namespace SAO.Controls.Elements
         {
             ; //
         }
-        public virtual void ChangeSize(in Size size)
-        {
-            var _size = new XPoint(size.Width, size.Height);
-            this.Rectangle = new XRectangle(this.Rectangle.Location, _size);
-        }
         public virtual void ChangeSize(in int w, in int h)
         {
-            ChangeSize(new Size(w, h));
-        }
-        public virtual void ChangeSize(in SizeF size)
-        {
-            ChangeSize(Size.Round(size));
+			var _size = new Point(w, h);
+            this.Rectangle = new Rectangle(this.Rectangle.Location, _size);
         }
         public virtual void ChangeSize(in float w, in float h)
         {

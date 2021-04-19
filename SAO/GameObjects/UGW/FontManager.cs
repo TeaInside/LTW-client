@@ -46,7 +46,9 @@ namespace SAO.GameObjects.UGW
         //-------------------------------------------------
         #region field's Region
         private CharacterRange[] _ranges;
+		#if (OLD_SAO)
         private System.Drawing.Text.PrivateFontCollection _collection;
+		#endif
         #endregion
         //-------------------------------------------------
         #region Constructor's Region
@@ -65,10 +67,12 @@ namespace SAO.GameObjects.UGW
             {
                 _ranges = null;
             }
+			#if (OLD_SAO)
             if (_collection != null)
             {
                 _collection = null;
             }
+			#endif
             return;
         }
         #endregion
@@ -85,6 +89,7 @@ namespace SAO.GameObjects.UGW
                 _ => null,
             };
         }
+		#if (OLD_SAO)
         public Font GetFont(SAO_Fonts _s_font, float size)
         {
             FontFamily f;
@@ -100,6 +105,7 @@ namespace SAO.GameObjects.UGW
                     return null;
             }
         }
+		#endif
         #endregion
         //-------------------------------------------------
         #region static Method's Region

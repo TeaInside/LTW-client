@@ -11,7 +11,6 @@ using SAO.Security;
 using SAO.GameObjects.UGW;
 using SAO.Controls.Elements;
 using SAO.GameObjects.Resources;
-using Graphics = System.Drawing.Graphics;
 using Point = Microsoft.Xna.Framework.Point;
 
 namespace SAO.Client
@@ -138,14 +137,7 @@ namespace SAO.Client
         #endregion
         //-------------------------------------------------
         #region Get Method's Region
-        internal Graphics GetGraphics()
-        {
-            if (Universe.IsWindows)
-            {
-                return Graphics.FromHwnd(GameUniverse.Handle);
-            }
-            return null;
-        }
+		
         #endregion
         //-------------------------------------------------
     }
