@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAO-linux", "SAO\SAO-linux.csproj", "{6CB5C21A-EB16-48D6-B98A-F18D7CE46785}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAO", "SAO\SAO.csproj", "{6CB5C21A-EB16-48D6-B98A-F18D7CE46785}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WotoProvider", "WotoProvider\WotoProvider.csproj", "{2EFF7FAB-7794-4BFA-AB48-998ADADC45A9}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SAO-win64", "SAO\SAO-win64.csproj", "{41E5FE6D-DA3C-4DE1-9331-1CCE1A121EAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

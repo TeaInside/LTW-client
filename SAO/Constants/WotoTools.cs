@@ -4,12 +4,8 @@
 // file 'LICENSE', which is part of the source code.
 
 using System;
-using System.Drawing.Imaging;
-using System.IO;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using SAO.Security;
-using SAO.Controls.Elements;
 
 namespace SAO.Constants
 {

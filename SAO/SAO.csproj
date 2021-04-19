@@ -4,7 +4,8 @@
         <TargetFramework>net5.0</TargetFramework>
 		<PublishSingleFile>true</PublishSingleFile>
 		<SelfContained>true</SelfContained>
-		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<RuntimeIdentifier Condition="'$(OS)' == 'unix'">linux-x64</RuntimeIdentifier>
+		<RuntimeIdentifier Condition="'$(OS)' == 'windows'">win-x64</RuntimeIdentifier>
 		<PublishTrimmed>true</PublishTrimmed>
 		<PublishReadyToRun>true</PublishReadyToRun>
 		<AssemblyName>SAO</AssemblyName>
@@ -25,15 +26,15 @@
     </PropertyGroup>
 	<PropertyGroup>
 		<!--
-			define the __WINDOWS__ Constant in order to use it in the
+			define the __LINUX__ Constant in order to use it in the
 			code as: 
-			#if __WINDOWS__
+			#if __LINUX__
 				....
 			#endif
 			===================================================================
 			please don't undefine this constant.
 		-->
-		<DefineConstants>__WINDOWS__</DefineConstants>
+		<DefineConstants>__LINUX__</DefineConstants>
 	</PropertyGroup>
     <ItemGroup>
         <None Remove="Icon.ico" />
@@ -46,6 +47,7 @@
     <ItemGroup>
         <TrimmerRootAssembly Include="Microsoft.Xna.Framework.Content.ContentTypeReader" Visible="false" />
     </ItemGroup>
+	
     <ItemGroup>
         <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.0.1641" />
         <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.0.1641" />
