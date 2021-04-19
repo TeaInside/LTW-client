@@ -1,0 +1,343 @@
+﻿// SAO : LT
+// Copyright (C) wotoTeam, TeaInside, MODAnime Foundation
+// This file is subject to the terms and conditions defined in
+// file 'LICENSE', which is part of the source code.
+
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Runtime.InteropServices;
+using System.IO.MemoryMappedFiles;
+using System.Globalization;
+using WotoProvider;
+using WotoProvider.Interfaces;
+using SAO.Client;
+using SAO.Controls;
+using SAO.Security;
+using SAO.LoadingService;
+
+namespace SAO.Constants
+{
+#pragma warning disable CA1401
+    [ComVisible(false)]
+    public static class ThereIsConstants
+    {
+        public struct Actions
+        {
+            //[DllImport("user32.dll")]
+            //public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+            /// <summary>
+            /// check if the current process 
+            /// </summary>
+            /// <returns>
+            /// true if the current proccess is the single-one, otherwise false.
+            /// </returns>
+            public static bool IsSingleOne()
+            {
+                if (Universe.IsUnix)
+                {
+                    var _p = Path.Here + Path.USlash + Program.MMF_NAME;
+                    if (File.Exists(_p))
+                    {
+                        try
+                        {
+                            Universe._mapped = new FileStream(_p,
+                                FileMode.Open, FileAccess.ReadWrite, FileShare.None);
+                            return true;
+                        }
+                        catch (Exception _e)
+                        {
+                            if (_e is IOException _io)
+                            {
+                                Console.WriteLine("Can't run two game!");
+                                return false;
+                            }
+                            Console.WriteLine(_e.Message);
+                            throw;
+                        }
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+                else if (Universe.IsWindows)
+                {
+                    try
+                    {
+                        using (AppSettings.Memory = MemoryMappedFile.OpenExisting(Program.MMF_NAME))
+                        {
+                            if (AppSettings.Memory == null)
+                            {
+                                return true;
+                            }
+                        }
+                        return false;
+                    }
+                    catch (FileNotFoundException)
+                    {
+                        return true;
+                    }
+                    catch(Exception e)
+                    {
+                        Console.WriteLine(e);
+                        return false;
+                    }
+                }
+                else
+                { 
+                    // it means that the current platform is not currently
+                    // supported in the game.
+                    var _p = Environment.OSVersion;
+                    var _s = AppSettings.NotSupportedPlatform + _p;
+                    throw new Exception(_s);
+                }
+            }
+            /// <summary>
+            /// create a single-one provider.
+            /// </summary>
+            /// <returns>
+            /// true if success, otherwise false.
+            /// </returns>
+            public static bool CreateSingleOne()
+            {
+                if (Universe.IsUnix)
+                {
+                    var _p = Path.Here + Path.USlash + Program.MMF_NAME;
+                    try
+                    {
+                        if (Universe._mapped == null)
+                        {
+                            Universe._mapped ??= File.Create(_p);
+                            Universe._mapped?.Lock(0, 0);
+                        }
+                        return true;
+                    }
+                    catch (Exception _e) 
+                    {
+                        Debug.Print(_e.ToString());
+                        Console.WriteLine(_e.Message);
+                        return false;
+                    }
+                }
+                else if (Universe.IsWindows)
+                {
+                    try
+                    {
+                        AppSettings.Memory = MemoryMappedFile.CreateNew(Program.MMF_NAME, 10000);
+                        var s = AppSettings.Memory.CreateViewStream();
+                        BinaryWriter writer = new BinaryWriter(s);
+                        writer.Write(AppSettings.CompanyName);
+                        writer.Close();
+                        writer.Dispose();
+                        s.Dispose();
+                        return true;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    // it means that the current platform is not currently
+                    // supported in the game.
+                    var _p = Environment.OSVersion;
+                    var _s = AppSettings.NotSupportedPlatform + _p;
+                    throw new Exception(_s);
+                }
+            }
+
+            internal static void ClearingPlayerProfile()
+            {
+                throw new NotImplementedException();
+            }
+
+            internal static StrongString OSの伊にファーエー所運()
+            {
+                throw new NotImplementedException();
+            }
+
+            internal static IDateProvider<DateTime, Trigger, StrongString> ToDateTime(StrongString strongString)
+            {
+                throw new NotImplementedException();
+            }
+        }
+        public struct Path
+        {
+            //---------------------------------------------
+            /// <summary>
+            /// The Application name.
+            /// </summary>
+            public const string App_Name = "SAO";
+            /// <summary>
+            /// The Format Flies.
+            /// </summary>
+            public const string FilesEnd_Name = ".Sao";
+            /// <summary>
+            /// Use it in the <see cref="SerializableAttribute"/> Classes.
+            /// like: <see cref="ProfileInfo"/>
+            /// </summary>
+            public const string NotSet = "notSet";
+            /// <summary>
+            /// The Double Slash that you should use before the names in paths.
+            /// if and only if the os is windows.
+            /// </summary>
+            public const string WSlash = "\\";
+            /// <summary>
+            /// The Double Slash that you should use before the names in paths.
+            /// if and only if the os is Unix.
+            /// </summary>
+            public const string USlash = "/";
+            public static string DoubleSlash
+            {
+                get
+                {
+                    if (Universe.IsUnix)
+                    {
+                        return USlash;
+                    }
+                    // ReSharper disable once RedundantIfElseBlock
+                    else if (Universe.IsWindows)
+                    {
+                        return WSlash;
+                    }
+                    // ReSharper disable once RedundantIfElseBlock
+                    else
+                    {
+                        throw new Exception();
+                    }
+                }
+            }
+            public const string Content = "Content";
+            //---------------------------------------------
+            public static string Here
+            {
+                get => Directory.GetCurrentDirectory();
+            }
+            public static string Datas_Path
+            {
+                get => Here + DoubleSlash + Content;
+            }
+            public static string AccountInfo_File_Path { get; internal set; }
+            public static string ProfileInfo_File_Path { get; internal set; }
+            public static string Profile_Folder_Path { get; internal set; }
+            //---------------------------------------------
+        }
+        public struct ResourcesName
+        {
+            /// <summary>
+            /// With Separate Character, please do NOT use it again.
+            /// </summary>
+            public const string End_Res_Name = Separate_Character + "Name";
+            /// <summary>
+            /// The name of FirstLable for Form1 in the Resources without _name;
+            /// </summary>
+            public const string FirstLabelNameInRes = "Label1";
+            public const string Separate_Character = "_";
+            //--------------------Labels----------------------------------
+
+            //----------------------------------------------
+            public const string Item1ForMainMenuNameInRes = "Item1";
+            public const string Item2ForMainMenuNameInRes = "Item2";
+            public const string Item3ForMainMenuNameInRes = "Item3";
+            public const string Item4ForMainMenuNameInRes = "Item4";
+            //-------------------Buttons----------------------------------
+        }
+        public struct Forming
+        {
+            public static GameClient GameClient
+            {
+                get
+                {
+                    return AppSettings.GameClient;
+                }
+                set
+                {
+                    AppSettings.GameClient = value;
+                }
+            }
+        }
+        public struct AppSettings
+        {
+            //--------------------------------------
+            //-----------------
+            /// <summary>
+            /// E = English, J = Japanese
+            /// </summary>
+            public static Language Language { get; set; } = Language.E;
+            /// <summary>
+            /// Please Notice that this is not an Index,
+            /// so it should start with 1,
+            /// and also the maximum value of this int would be: 
+            /// <see cref="MAXIMUM_PROFILE"/>. <code></code>
+            /// Use it in ???
+            /// </summary>
+            public static int CurrentProfileNum { get; set; } = 1;
+            
+            public static CultureInfo CultureInfo { get; set; } = new CultureInfo("en-US");
+            //-----------------
+            //--------------------------------------
+            public static bool IsShowingClosedSandBox { get; set; } = false;
+            //public static NoInternetConnectionSandBox ConnectionClosedSandBox { get; set; }
+            //--------------------------------------
+            //-----------------
+            public const string AppVersion = "1.1.1.5014";
+            public const string AppVerCodeName = "5014Re";
+            public const string AppVerToken = "";
+            public const string CompanyName = "wotoTeam";
+            public const string CompanyCopyRight = "© wotoTeam - 2021";
+            public const string DateTimeFormat = "ddd, dd MMM yyyy HH:mm:ss 'GMT'";
+            public const string TimeFormat = "HH:mm:ss";
+            public const string TimeRequestURL = @"https://microsoft.com";
+            public const string ConnectionURL = @"http://google.com/generate_204";
+            public const string DateHeaderKey = "date";
+            public const string NotSupportedPlatform = "Not Supported Platform: ";
+            //-----------------
+            public const int MAXIMUM_PROFILE = 64;
+            //-----------------
+            public const StringSplitOptions SplitOption = StringSplitOptions.RemoveEmptyEntries;
+            //-------------------------------------
+            /// <summary>
+            /// Determine whether <see cref="GlobalTiming"/>, has been set with 
+            /// interner: <see cref="TimeRequestURL"/>, or not.
+            /// </summary>
+            public static bool DateTimeSettedWithNet { get; set; } = false;
+            /// <summary>
+            /// The Time Worker.
+            /// </summary>
+            public static Trigger TimeWorker { get; set; } = new Trigger();
+            /// <summary>
+            /// Global Timing worker.
+            /// it will add seconds to the 
+            /// <see cref="GlobalTiming"/>
+            /// </summary>
+            public static Trigger GlobalTimingWorker { get; set; }
+            public static MemoryMappedFile Memory { get; internal set; }
+            /// <summary>
+            /// Global Date and Time Parameter.
+            /// </summary>
+            public static IDateProvider<DateTime, Trigger, StrongString> GlobalTiming { get; set; }
+            /// <summary>
+            /// the default time out for database.
+            /// </summary>
+            public static TimeSpan DefaultDataBaseTimeOut { get; } = new TimeSpan(0, 0, 6);
+            /// <summary>
+            /// The Game Client of the game.
+            /// this is after the main form.
+            /// </summary>
+            public static GameClient GameClient { get; set; }
+            public static WotoCreation WotoCreation { get; set; }
+            //--------------------------------------
+            public static IDECoderProvider<StrongString, QString> DECoder { get; set; }
+            //--------------------------------------
+            /// <summary>
+            /// The Spaces between two GameControls in the game.
+            /// the unit is pixel.
+            /// </summary>
+            public const int Between_GameControls = 4;
+            //--------------------------------------
+        }
+    }
+#pragma warning restore CA1401
+}

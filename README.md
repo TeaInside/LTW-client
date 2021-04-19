@@ -1,2 +1,2 @@
 # SAO
-SAO Game Project.
+The Private SAO Project.

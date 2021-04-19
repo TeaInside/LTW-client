@@ -1,0 +1,80 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <PublishReadyToRun>false</PublishReadyToRun>
+	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+	<PublishSingleFile>true</PublishSingleFile>
+    <TieredCompilation>false</TieredCompilation>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <AssemblyVersion>2.1.1.25</AssemblyVersion>
+    <FileVersion>2.1.1.25</FileVersion>
+    <Authors>wotoTeam</Authors>
+    <Product>SAO-LT</Product>
+    <Description>Sword Art Online : The Last Testament</Description>
+    <Copyright>Copyright © wotoTeam  2021</Copyright>
+    <Company>woto_team</Company>
+    <PackageLicenseExpression>Under The Lisence of woto_team Corporation</PackageLicenseExpression>
+  </PropertyGroup>
+	<PropertyGroup>
+		<DefineConstants>__WINDOWS__</DefineConstants>
+	</PropertyGroup>
+  <ItemGroup>
+    <TrimmerRootAssembly Include="Microsoft.Xna.Framework.Content.ContentTypeReader" Visible="false" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.0.1641" />
+    <PackageReference Include="MonoGame.Framework.WindowsDX" Version="3.8.0.1641" />
+    <PackageReference Include="Octokit" Version="0.50.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <MonoGameContentReference Include="Content\Content.mgcb" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WotoProvider\WotoProvider.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\Animation\AnimationCompanies\" />
+    <Folder Include="Controls\GameGraphics\XDrawing\" />
+    <Folder Include="GameObjects\LiveBattle\" />
+    <Folder Include="GameObjects\MapObjects\" />
+    <Folder Include="GameObjects\NPC\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="SandBox\ErrorSandBoxes\ConnectionClosedSandBox.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="SandBox\ErrorSandBoxes\LogedOutDoneSandBox.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="SandBox\ErrorSandBoxes\LogOutWarningSandBox.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="SandBox\ErrorSandBoxes\UserAlreadyExistSandBox.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="SandBox\ErrorSandBoxes\ProfileWrongSandBox.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="SandBox\ErrorSandBoxes\ProfileLoadFailedSandBox.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

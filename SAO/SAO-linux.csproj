@@ -1,0 +1,91 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net5.0</TargetFramework>
+		<PublishSingleFile>true</PublishSingleFile>
+		<SelfContained>true</SelfContained>
+		<RuntimeIdentifier>linux-x64</RuntimeIdentifier>
+		<PublishTrimmed>true</PublishTrimmed>
+		<PublishReadyToRun>true</PublishReadyToRun>
+		<AssemblyName>SAO</AssemblyName>
+		<RootNamespace>SAO</RootNamespace>
+		<NeutralLanguage>en-US</NeutralLanguage>
+    </PropertyGroup>
+    <PropertyGroup>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <ApplicationIcon>Icon.ico</ApplicationIcon>
+		<AssemblyVersion>2.1.1.25</AssemblyVersion>
+		<FileVersion>2.1.1.25</FileVersion>
+		<Authors>wotoTeam</Authors>
+		<Product>SAO-LT</Product>
+		<Description>Sword Art Online : The Last Testament</Description>
+		<Copyright>Copyright © wotoTeam  2021</Copyright>
+		<Company>woto_team</Company>
+		<PackageLicenseExpression>Under The Lisence of woto_team Corporation</PackageLicenseExpression>
+    </PropertyGroup>
+	<PropertyGroup>
+		<!--
+			define the __LINUX__ Constant in order to use it in the
+			code as: 
+			#if __LINUX__
+				....
+			#endif
+			===================================================================
+			please don't undefine this constant.
+		-->
+		<DefineConstants>__LINUX__</DefineConstants>
+	</PropertyGroup>
+    <ItemGroup>
+        <None Remove="Icon.ico" />
+        <None Remove="Icon.bmp" />
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Include="Icon.ico" />
+		<EmbeddedResource Include="Icon.bmp" />
+    </ItemGroup>
+    <ItemGroup>
+        <TrimmerRootAssembly Include="Microsoft.Xna.Framework.Content.ContentTypeReader" Visible="false" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.0.1641" />
+        <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.0.1641" />
+    </ItemGroup>
+    <ItemGroup>
+      <Reference Include="Octokit, Version=0.50.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>..\octokit\0.50.0\lib\netstandard2.0\Octokit.dll</HintPath>
+      </Reference>
+      <Reference Include="System.Drawing.Common, Version=4.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+        <HintPath>..\..\..\..\..\..\..\..\usr\share\dotnet\sdk\5.0.201\System.Drawing.Common.dll</HintPath>
+      </Reference>
+	  <Reference Include="FontStashSharp">
+        <HintPath>..\refrences\FontStashSharp.MonoGame.dll</HintPath>
+      </Reference>
+	  <Reference Include="Cyotek.Drawing.BitmapFont">
+        <HintPath>..\refrences\Cyotek.Drawing.BitmapFont.dll</HintPath>
+      </Reference>
+	  <Reference Include="StbImageSharp">
+        <HintPath>..\refrences\StbImageSharp.dll</HintPath>
+      </Reference>
+	  <Reference Include="StbTrueTypeSharp">
+        <HintPath>..\refrences\StbTrueTypeSharp.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="..\..\..\SAO\SAO\Content\obj\DesktopGL\Content\.mgstats">
+        <Link>Content\obj\DesktopGL\Content\.mgstats</Link>
+      </Content>
+    </ItemGroup>
+    <ItemGroup>
+		<Folder Include="..\..\..\SAO\SAO\Content\bin\DesktopGL\Content">
+			<Link>Content\bin\DesktopGL\Content</Link>
+		</Folder>
+      <Folder Include="Controls\Animation\AnimationCompanies" />
+      <Folder Include="Controls\GameGraphics\XDrawing" />
+      <Folder Include="GameObjects\LiveBattle" />
+      <Folder Include="GameObjects\MapObjects" />
+      <Folder Include="GameObjects\NPC" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\WotoProvider\WotoProvider.csproj" />
+    </ItemGroup>
+</Project>

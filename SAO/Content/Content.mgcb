@@ -1,0 +1,409 @@
+
+#----------------------------- Global Properties ----------------------------#
+
+/outputDir:bin/$(Platform)
+/intermediateDir:obj/$(Platform)
+/platform:DesktopGL
+/config:
+/profile:Reach
+/compress:False
+
+#-------------------------------- References --------------------------------#
+
+
+#---------------------------------- Content ---------------------------------#
+
+#begin f_/m_/f_010320212340.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=True
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:f_/m_/f_010320212340.png
+
+#begin f_/m_/f_010320212341.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=True
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:f_/m_/f_010320212341.png
+
+#begin f_/m_/f_010320212342.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=True
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:f_/m_/f_010320212342.png
+
+#begin f_/m_/f_010320212343.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=True
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:f_/m_/f_010320212343.png
+
+#begin f_/m_/f_270220212252.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=True
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:f_/m_/f_270220212252.png
+
+#begin f_/s_b_/f_080320212007.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=True
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:f_/s_b_/f_080320212007.png
+
+#begin f_/s_b_/f_080320212008.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=True
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:f_/s_b_/f_080320212008.png
+
+#begin f_/s_b_/f_080320212009.jpg
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=True
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:f_/s_b_/f_080320212009.jpg
+
+#begin f_/s_b_/f_191020200758.bin
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=True
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:f_/s_b_/f_191020200758.bin
+
+#begin F_M_G/Old Story Bold/Old Story Bold17.xnb
+/copy:F_M_G/Old Story Bold/Old Story Bold17.xnb
+
+#begin F_M_G/Old Story Bold/Old Story Bold15.xnb
+/copy:F_M_G/Old Story Bold/Old Story Bold15.xnb
+
+#begin F_M_G/Old Story Bold/Old Story Bold23.xnb
+/copy:F_M_G/Old Story Bold/Old Story Bold23.xnb
+
+#begin F_M_G/Old Story Bold/Old Story Bold19.xnb
+/copy:F_M_G/Old Story Bold/Old Story Bold19.xnb
+
+#begin F_M_G/Old Story Bold/Old Story Bold27.xnb
+/copy:F_M_G/Old Story Bold/Old Story Bold27.xnb
+
+#begin F_M_G/Old Story Bold/Old Story Bold12.xnb
+/copy:F_M_G/Old Story Bold/Old Story Bold12.xnb
+
+#begin F_M_G/Old Story Bold/Old Story Bold18.xnb
+/copy:F_M_G/Old Story Bold/Old Story Bold18.xnb
+
+#begin F_M_G/Old Story Bold/Old Story Bold24.xnb
+/copy:F_M_G/Old Story Bold/Old Story Bold24.xnb
+
+#begin F_M_G/Old Story Bold/Old Story Bold21.xnb
+/copy:F_M_G/Old Story Bold/Old Story Bold21.xnb
+
+#begin F_M_G/Old Story Bold/Old Story Bold11.xnb
+/copy:F_M_G/Old Story Bold/Old Story Bold11.xnb
+
+#begin F_M_G/Old Story Bold/Old Story Bold20.xnb
+/copy:F_M_G/Old Story Bold/Old Story Bold20.xnb
+
+#begin F_M_G/Old Story Bold/Old Story Bold30.xnb
+/copy:F_M_G/Old Story Bold/Old Story Bold30.xnb
+
+#begin F_M_G/Old Story Bold/Old Story Bold28.xnb
+/copy:F_M_G/Old Story Bold/Old Story Bold28.xnb
+
+#begin F_M_G/Old Story Bold/Old Story Bold22.xnb
+/copy:F_M_G/Old Story Bold/Old Story Bold22.xnb
+
+#begin F_M_G/Old Story Bold/Old Story Bold13.xnb
+/copy:F_M_G/Old Story Bold/Old Story Bold13.xnb
+
+#begin F_M_G/Old Story Bold/Old Story Bold14.xnb
+/copy:F_M_G/Old Story Bold/Old Story Bold14.xnb
+
+#begin F_M_G/Old Story Bold/Old Story Bold29.xnb
+/copy:F_M_G/Old Story Bold/Old Story Bold29.xnb
+
+#begin F_M_G/Old Story Bold/Old Story Bold16.xnb
+/copy:F_M_G/Old Story Bold/Old Story Bold16.xnb
+
+#begin F_M_G/Old Story Bold/Old Story Bold26.xnb
+/copy:F_M_G/Old Story Bold/Old Story Bold26.xnb
+
+#begin F_M_G/Old Story Bold/Old Story Bold25.xnb
+/copy:F_M_G/Old Story Bold/Old Story Bold25.xnb
+
+#begin F_M_G/Old Story Bold/Old Story Bold8.xnb
+/copy:F_M_G/Old Story Bold/Old Story Bold8.xnb
+
+#begin F_M_G/Old Story Bold/Old Story Bold9.xnb
+/copy:F_M_G/Old Story Bold/Old Story Bold9.xnb
+
+#begin F_M_G/Old Story Bold/Old Story Bold10.xnb
+/copy:F_M_G/Old Story Bold/Old Story Bold10.xnb
+
+#begin F_M_G/Ani Regular/Ani Regular18.xnb
+/copy:F_M_G/Ani Regular/Ani Regular18.xnb
+
+#begin F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular23.xnb
+/copy:F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular23.xnb
+
+#begin F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular14.xnb
+/copy:F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular14.xnb
+
+#begin F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular13.xnb
+/copy:F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular13.xnb
+
+#begin F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular10.xnb
+/copy:F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular10.xnb
+
+#begin F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular17.xnb
+/copy:F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular17.xnb
+
+#begin F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular27.xnb
+/copy:F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular27.xnb
+
+#begin F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular24.xnb
+/copy:F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular24.xnb
+
+#begin F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular29.xnb
+/copy:F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular29.xnb
+
+#begin F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular15.xnb
+/copy:F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular15.xnb
+
+#begin F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular22.xnb
+/copy:F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular22.xnb
+
+#begin F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular28.xnb
+/copy:F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular28.xnb
+
+#begin F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular18.xnb
+/copy:F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular18.xnb
+
+#begin F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular21.xnb
+/copy:F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular21.xnb
+
+#begin F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular20.xnb
+/copy:F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular20.xnb
+
+#begin F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular9.xnb
+/copy:F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular9.xnb
+
+#begin F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular12.xnb
+/copy:F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular12.xnb
+
+#begin F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular26.xnb
+/copy:F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular26.xnb
+
+#begin F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular19.xnb
+/copy:F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular19.xnb
+
+#begin F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular25.xnb
+/copy:F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular25.xnb
+
+#begin F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular8.xnb
+/copy:F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular8.xnb
+
+#begin F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular16.xnb
+/copy:F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular16.xnb
+
+#begin F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular30.xnb
+/copy:F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular30.xnb
+
+#begin F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular11.xnb
+/copy:F_M_G/SAOWelcomeTT-Regular/SAOWelcomeTT-Regular11.xnb
+
+#begin F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold25.xnb
+/copy:F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold25.xnb
+
+#begin F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold11.xnb
+/copy:F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold11.xnb
+
+#begin F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold9.xnb
+/copy:F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold9.xnb
+
+#begin F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold20.xnb
+/copy:F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold20.xnb
+
+#begin F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold18.xnb
+/copy:F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold18.xnb
+
+#begin F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold14.xnb
+/copy:F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold14.xnb
+
+#begin F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold27.xnb
+/copy:F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold27.xnb
+
+#begin F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold17.xnb
+/copy:F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold17.xnb
+
+#begin F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold29.xnb
+/copy:F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold29.xnb
+
+#begin F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold19.xnb
+/copy:F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold19.xnb
+
+#begin F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold28.xnb
+/copy:F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold28.xnb
+
+#begin F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold16.xnb
+/copy:F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold16.xnb
+
+#begin F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold8.xnb
+/copy:F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold8.xnb
+
+#begin F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold22.xnb
+/copy:F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold22.xnb
+
+#begin F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold24.xnb
+/copy:F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold24.xnb
+
+#begin F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold15.xnb
+/copy:F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold15.xnb
+
+#begin F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold30.xnb
+/copy:F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold30.xnb
+
+#begin F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold23.xnb
+/copy:F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold23.xnb
+
+#begin F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold26.xnb
+/copy:F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold26.xnb
+
+#begin F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold10.xnb
+/copy:F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold10.xnb
+
+#begin F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold12.xnb
+/copy:F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold12.xnb
+
+#begin F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold13.xnb
+/copy:F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold13.xnb
+
+#begin F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold21.xnb
+/copy:F_M_G/SAOWelcomeTT-Bold/SAOWelcomeTT-Bold21.xnb
+
+#begin F_M_G/Old Story Bold Italic/Old Story Bold Italic30.xnb
+/copy:F_M_G/Old Story Bold Italic/Old Story Bold Italic30.xnb
+
+#begin F_M_G/Old Story Bold Italic/Old Story Bold Italic29.xnb
+/copy:F_M_G/Old Story Bold Italic/Old Story Bold Italic29.xnb
+
+#begin F_M_G/Old Story Bold Italic/Old Story Bold Italic24.xnb
+/copy:F_M_G/Old Story Bold Italic/Old Story Bold Italic24.xnb
+
+#begin F_M_G/Old Story Bold Italic/Old Story Bold Italic27.xnb
+/copy:F_M_G/Old Story Bold Italic/Old Story Bold Italic27.xnb
+
+#begin F_M_G/Old Story Bold Italic/Old Story Bold Italic16.xnb
+/copy:F_M_G/Old Story Bold Italic/Old Story Bold Italic16.xnb
+
+#begin F_M_G/Old Story Bold Italic/Old Story Bold Italic14.xnb
+/copy:F_M_G/Old Story Bold Italic/Old Story Bold Italic14.xnb
+
+#begin F_M_G/Old Story Bold Italic/Old Story Bold Italic23.xnb
+/copy:F_M_G/Old Story Bold Italic/Old Story Bold Italic23.xnb
+
+#begin F_M_G/Old Story Bold Italic/Old Story Bold Italic25.xnb
+/copy:F_M_G/Old Story Bold Italic/Old Story Bold Italic25.xnb
+
+#begin F_M_G/Old Story Bold Italic/Old Story Bold Italic26.xnb
+/copy:F_M_G/Old Story Bold Italic/Old Story Bold Italic26.xnb
+
+#begin F_M_G/Old Story Bold Italic/Old Story Bold Italic19.xnb
+/copy:F_M_G/Old Story Bold Italic/Old Story Bold Italic19.xnb
+
+#begin F_M_G/Old Story Bold Italic/Old Story Bold Italic11.xnb
+/copy:F_M_G/Old Story Bold Italic/Old Story Bold Italic11.xnb
+
+#begin F_M_G/Old Story Bold Italic/Old Story Bold Italic17.xnb
+/copy:F_M_G/Old Story Bold Italic/Old Story Bold Italic17.xnb
+
+#begin F_M_G/Old Story Bold Italic/Old Story Bold Italic21.xnb
+/copy:F_M_G/Old Story Bold Italic/Old Story Bold Italic21.xnb
+
+#begin F_M_G/Old Story Bold Italic/Old Story Bold Italic20.xnb
+/copy:F_M_G/Old Story Bold Italic/Old Story Bold Italic20.xnb
+
+#begin F_M_G/Old Story Bold Italic/Old Story Bold Italic12.xnb
+/copy:F_M_G/Old Story Bold Italic/Old Story Bold Italic12.xnb
+
+#begin F_M_G/Old Story Bold Italic/Old Story Bold Italic22.xnb
+/copy:F_M_G/Old Story Bold Italic/Old Story Bold Italic22.xnb
+
+#begin F_M_G/Old Story Bold Italic/Old Story Bold Italic10.xnb
+/copy:F_M_G/Old Story Bold Italic/Old Story Bold Italic10.xnb
+
+#begin F_M_G/Old Story Bold Italic/Old Story Bold Italic13.xnb
+/copy:F_M_G/Old Story Bold Italic/Old Story Bold Italic13.xnb
+
+#begin F_M_G/Old Story Bold Italic/Old Story Bold Italic28.xnb
+/copy:F_M_G/Old Story Bold Italic/Old Story Bold Italic28.xnb
+
+#begin F_M_G/Old Story Bold Italic/Old Story Bold Italic15.xnb
+/copy:F_M_G/Old Story Bold Italic/Old Story Bold Italic15.xnb
+
+#begin F_M_G/Old Story Bold Italic/Old Story Bold Italic18.xnb
+/copy:F_M_G/Old Story Bold Italic/Old Story Bold Italic18.xnb
+
+#begin F_M_G/Old Story Bold Italic/Old Story Bold Italic9.xnb
+/copy:F_M_G/Old Story Bold Italic/Old Story Bold Italic9.xnb
+
+#begin F_M_G/Old Story Bold Italic/Old Story Bold Italic8.xnb
+/copy:F_M_G/Old Story Bold Italic/Old Story Bold Italic8.xnb
+
+#begin Font1.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Font1.spritefont
+

@@ -1,0 +1,4 @@
+# ignore git files.
+
+/.idea
+SAO.sln.DotSettings.user
