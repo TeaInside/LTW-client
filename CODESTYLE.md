@@ -10,8 +10,8 @@ Open braces should always be at the beginning of the line after the statement th
 ```
 if (someExpression)
 {
-   DoSomething();
-   DoAnotherThing();
+	DoSomething();
+	DoAnotherThing();
 }
 else
 {
@@ -45,7 +45,8 @@ switch (someExpression)
 
 Braces also **should** be used for single statement blocks immediately following a `for`, `foreach`, `if`, `do`, etc. The single statement block should always be on the following line and indented by Tab. This increases code readability and maintainability.
 ```
-for (int i = 0; i < 100; ++i){
+for (int i = 0; i < 100; ++i)
+{
 	DoSomething(i);
 }
 ```
@@ -120,44 +121,44 @@ Spaces improve readability by decreasing code density. Here are some guidelines 
 
 **Do** use a single space after a comma between function arguments.
 ```
-Console.In.Read(myChar, 0, 1);  // Right
-Console.In.Read(myChar,0,1);	// Wrong
+Console.In.Read(myChar, 0, 1);		// Right
+Console.In.Read(myChar,0,1);		// Wrong
 ```
 **Do not** use a space after the parenthesis and function arguments.
 ```
-CreateFoo(myChar, 0, 1)		 // Right
-CreateFoo( myChar, 0, 1 )	   // Wrong
+CreateFoo(myChar, 0, 1);			// Right
+CreateFoo( myChar, 0, 1 );			// Wrong
 ```
 **Do not** use spaces between a function name and parentheses.
 ```
-CreateFoo()					 // Right
-CreateFoo ()					// Wrong
+CreateFoo()							// Right
+CreateFoo ()						// Wrong
 ```
 **Do not** use spaces inside brackets.
 ```
-x = dataArray[index];		   // Right
-x = dataArray[ index ];		 // Wrong
+x = dataArray[index];				// Right
+x = dataArray[ index ];				// Wrong
 ```
 **Do** use a single space before flow control statements.
 ```
-while (x == y)				  // Right
-while(x==y)					 // Wrong
+while (x == y)						// Right
+while(x==y)							// Wrong
 ```
 **Do** use a single space before and after binary operators.
 ```
-if (x == y)					 // Right
-if (x==y)					   // Wrong
+if (x == y)							// Right
+if (x==y)							// Wrong
 ```
 **Do not** use a space between a unary operator and the operand.
 ```
-++i;							// Right
-++ i;						   // Wrong
+++i;								// Right
+++ i;								// Wrong
 ```
 **Do not** use a space before a semi-colon. 
 **Do** use a space after a semi-colon if there is more on the same line.
 ```
-for (int i = 0; i < 100; ++i)   // Right
-for (int i=0 ; i<100 ; ++i)	 // Wrong
+for (int i = 0; i < 100; ++i)		// Right
+for (int i=0 ; i<100 ; ++i)			// Wrong
 ```
 
 ## Naming
