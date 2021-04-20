@@ -7,7 +7,7 @@ using SAO.GameObjects.WMath;
 
 namespace SAO.Controls.Moving
 {
-    public sealed partial class MoveList : ListW<IMoveable>
+    public sealed class MoveList : ListW<IMoveable>
     {
         //-------------------------------------------------
         #region Constant's Region
