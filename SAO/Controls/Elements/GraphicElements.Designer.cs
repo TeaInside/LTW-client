@@ -48,7 +48,7 @@ namespace SAO.Controls.Elements
         }
         #endregion
         //-------------------------------------------------
-        #region ordinary Methods
+        #region ordinary Methods Region
         /// <summary>
         /// Apply the element, so the element draw itself.
         /// you should call this method only once and only at the start.
