@@ -38,9 +38,9 @@ namespace SAO.SandBox.ErrorSandBoxes
             this.BodyElement.SetStatus(1);
             this.BackButton.SetStatus(1);
             //fontAndTextAligns:
-            this.TitleElement.ChangeFont(FontManager.GetSprite(SAO_Fonts.sao_tt_regular, 18));
-            this.BodyElement.ChangeFont(FontManager.GetSprite(SAO_Fonts.sao_tt_regular, 16));
-            this.BackButton.ChangeFont(FontManager.GetSprite(SAO_Fonts.sao_tt_regular, 15));
+            this.TitleElement.ChangeFont(FontManager.GetSprite(SAO_Fonts.sao_tt_regular, 28));
+            this.BodyElement.ChangeFont(FontManager.GetSprite(SAO_Fonts.sao_tt_regular, 26));
+            this.BackButton.ChangeFont(FontManager.GetSprite(SAO_Fonts.sao_tt_regular, 25));
             this.TitleElement.ChangeAlignmation(StringAlignmation.MiddleCenter);
             this.BodyElement.ChangeAlignmation(StringAlignmation.MiddleCenter);
             this.BackButton.ChangeAlignmation(StringAlignmation.MiddleCenter);

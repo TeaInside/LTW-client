@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 using SAO.Controls;
 using SAO.Security;
+using SAO.Constants;
 using SAO.GameObjects.UGW;
 using SAO.Controls.Elements;
 using SAO.GameObjects.Resources;
@@ -119,7 +120,7 @@ namespace SAO.Client
             };
             IsMouseVisible = true;
             GameUniverse = new Universe(Window.Handle, this);
-            Content.RootDirectory = "Content";
+            Content.RootDirectory = ThereIsConstants.Path.Content;
             //---------------------------------------------
             IsConnecting                = true;
             IsShowingSandBox            = false;

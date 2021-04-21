@@ -37,7 +37,7 @@
 			please don't undefine this constant.
 		-->
 		<DefineConstants Condition="'$(OS)' == 'unix'">__LINUX__</DefineConstants>
-		<DefineConstants Condition="'$(OS)' == 'windows'">__WINDOWS__</DefineConstants>
+		<DefineConstants Condition="'$(OS)' == 'Windows_NT'">__WINDOWS__</DefineConstants>
 	</PropertyGroup>
     <ItemGroup>
         <None Remove="Icon.ico" />

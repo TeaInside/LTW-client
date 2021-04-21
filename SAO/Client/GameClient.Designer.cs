@@ -154,7 +154,7 @@ namespace SAO.Client
 			//names:
 			this.FirstFlatElement.SetLabelName(FirstLabelNameInRes);
 			//fontAndTextAligns:
-			this.FirstFlatElement.ChangeFont(this.FontManager.GetSprite(SAO_Fonts.sao_tt_regular, 19));
+			this.FirstFlatElement.ChangeFont(this.FontManager.GetSprite(SAO_Fonts.sao_tt_regular, 26));
 			this.FirstFlatElement.ChangeAlignmation(StringAlignmation.MiddleCenter);
 			//priorities:
 			this.FirstFlatElement.ChangePriority(ElementPriority.Normal);
@@ -263,19 +263,16 @@ namespace SAO.Client
 			// check if we are in windows or not.
 			if (!Universe.IsWindows)
 			{
+
 				// check if game universe have to check the 
 				// __mmf__ assist file or not.
 				if (!GameUniverse._checkFile)
 				{
 					this.GameUniverse._checkFile = true;
 				}
-				// game should always be in the fullscreen mode.
-				this.GraphicsDM.ToggleFullScreen();
 			}
-			else
-			{
-				this.GraphicsDM.ToggleFullScreen();
-			}
+			// game should always be in the fullscreen mode.
+			this.GraphicsDM.ToggleFullScreen();
 		}
 
 
@@ -324,7 +321,7 @@ namespace SAO.Client
 			{
 				this.Exit();
 			}
-			// update the game universe, so it can handle its events.
+			// update the game universe, so it can handle its own events.
 			this.GameUniverse?.UpdateUniverse();
 			// check the requests came from outside of the envinment of the Game. 
 			this.CheckRequests();
@@ -342,9 +339,6 @@ namespace SAO.Client
 			this.GraphicsDevice.Clear(SColor.Black);
 			this.DrawBackGround();
 			this.ElementManager?.Draw(gameTime, this.SpriteBatch);
-			this.SpriteBatch?.Begin();
-			//this.SpriteBatch?.DrawString(Fonts.GetFont(62), "hihi!これはただの例え話じゃない", new(10, 10), Color.White);
-			this.SpriteBatch?.End();
 			base.Draw(gameTime);
 		}
 		#endregion
@@ -387,7 +381,7 @@ namespace SAO.Client
 								// this.GameUniverse.WotoPlanet?.BringToFront();
 								// this.GameUniverse.WotoPlanet?.Activate();
 								// this.GameUniverse.WotoPlanet?.Focus();
-								GraphicsDM.ToggleFullScreen();
+								this.GraphicsDM.ToggleFullScreen();
 							}
 							catch
 							{

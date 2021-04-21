@@ -74,9 +74,9 @@ namespace SAO.GameObjects.Heroes
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream myFile = 
                 new FileStream(ThereIsConstants.Path.Datas_Path + 
-                ThereIsConstants.Path.DoubleSlash + FirstNameOfFile + 
-                HeroID + EndNameOfFile, 
-                FileMode.OpenOrCreate, FileAccess.Write);
+					FirstNameOfFile + 
+                	HeroID + EndNameOfFile, 
+                	FileMode.OpenOrCreate, FileAccess.Write);
             //formatter.Serialize(myFile, this);
             myFile.Close();
             myFile.Dispose();
@@ -257,8 +257,8 @@ namespace SAO.GameObjects.Heroes
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream myFile =
-                new FileStream(ThereIsConstants.Path.Datas_Path +
-                ThereIsConstants.Path.DoubleSlash + FirstNameOfFile +
+                new FileStream(ThereIsConstants.Path.Datas_Path+
+				FirstNameOfFile +
                 heroID + EndNameOfFile,
                 FileMode.Open, FileAccess.Read);
             HeroSerialize heroSerialize = null; // = (HeroSerialize)formatter.Deserialize(myFile);
@@ -334,7 +334,6 @@ namespace SAO.GameObjects.Heroes
                 Block_Rate = bLock_rate,
             };
             File.Copy(imagePath, ThereIsConstants.Path.Datas_Path +
-                ThereIsConstants.Path.DoubleSlash +
                 FirstNameOfImage_580_500_File + heroID + EndNameOfFile, true);
             return heroSerialize;
         }

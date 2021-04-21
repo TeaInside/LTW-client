@@ -39,7 +39,6 @@ namespace SAO.GameObjects.UGW
 		/// </summary>
 		public const string NSRFileInRes		= "NotoSansJP-Regular";
 		public const string F_M_G						= @"F_M_G\";
-		public const string FO_DIRECROTEY				= @"\fo\";
 		public const int FontBitmapWidth				= 1024;
 		public const int FontBitmapHeight			   	= 1024;
 		public const int OLDSTORY_INDEX				 	= 0;
@@ -48,10 +47,7 @@ namespace SAO.GameObjects.UGW
 		#endregion
 		//-------------------------------------------------
 		#region static Properties Region
-		public static string FoDir
-		{
-			get => ThereIsConstants.Path.Here + FO_DIRECROTEY;
-		}
+
 		#endregion
 		//-------------------------------------------------
 		#region Properties Region
@@ -65,7 +61,7 @@ namespace SAO.GameObjects.UGW
 		private FontSystem _old_story_bold_italic;
 		private FontSystem _sao_bold;
 		private FontSystem _sao_regular;
-		private FontSystem _sans_noto_regular;
+		private FontSystem _noto_sans_regular;
 		#endregion
 		//-------------------------------------------------
 		#region Constructor's Region
@@ -99,33 +95,33 @@ namespace SAO.GameObjects.UGW
 				}
 				case SAO_Fonts.sao_tt_regular:
 				{
-					if (this._sao_bold != null)
+					if (this._sao_regular != null)
 					{
-						return this._sao_bold.GetFont(size);
+						return this._sao_regular.GetFont(size);
 					}
 					break;
 				}
 				case SAO_Fonts.old_story_bold:
 				{
-					if (this._sao_bold != null)
+					if (this._old_story_bold != null)
 					{
-						return this._sao_bold.GetFont(size);
+						return this._old_story_bold.GetFont(size);
 					}
 					break;
 				}
 				case SAO_Fonts.old_story_bold_italic:
 				{
-					if (this._sao_bold != null)
+					if (this._old_story_bold_italic != null)
 					{
-						return this._sao_bold.GetFont(size);
+						return this._old_story_bold_italic.GetFont(size);
 					}
 					break;
 				}
 				case SAO_Fonts.noto_sans_JP:
 				{
-					if (this._sao_bold != null)
+					if (this._noto_sans_regular != null)
 					{
-						return this._sao_bold.GetFont(size);
+						return this._noto_sans_regular.GetFont(size);
 					}
 					break;
 				}

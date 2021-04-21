@@ -57,7 +57,7 @@ namespace SAO.GameObjects.Characters
         /// <exception cref="System.Runtime.Serialization.SerializationException"></exception>
         public DialogContext(string DialogCaption)
         {
-            FileStream myFile = new FileStream(ThereIsConstants.Path.Datas_Path + "\\" +
+            FileStream myFile = new FileStream(ThereIsConstants.Path.Datas_Path +
                 DialogCaption + ".bin", FileMode.OpenOrCreate, FileAccess.Read);
             BinaryFormatter formatter = new BinaryFormatter();
 #pragma warning disable 618
@@ -143,7 +143,7 @@ namespace SAO.GameObjects.Characters
         /// <exception cref="System.Runtime.Serialization.SerializationException"></exception>
         public void UpdateDialog()
         {
-            FileStream myFile = new FileStream(ThereIsConstants.Path.Datas_Path + "\\" +
+            FileStream myFile = new FileStream(ThereIsConstants.Path.Datas_Path +
                 dialogCaption + ".bin", FileMode.OpenOrCreate, FileAccess.Write);
             BinaryFormatter formatter = new BinaryFormatter();
 #pragma warning disable 618
@@ -177,7 +177,7 @@ namespace SAO.GameObjects.Characters
         //-----------------------------------------------
         public static DialogContext FromFile(string DialogName)
         {
-            FileStream myFile = new FileStream(ThereIsConstants.Path.Datas_Path + "\\" +
+            FileStream myFile = new FileStream(ThereIsConstants.Path.Datas_Path +
                 DialogName + ".bin", FileMode.OpenOrCreate, FileAccess.Read);
             BinaryFormatter formatter = new BinaryFormatter();
 #pragma warning disable 618
