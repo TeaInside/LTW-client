@@ -26,20 +26,18 @@
     </PropertyGroup>
 	<PropertyGroup>
 		<!--
-			define the __LINUX__ Constant in order to use it in the
+			define the __LINUX__ and __WINDOWS__ constants in order to use it in the
 			code as: 
 			#if __LINUX__
 				....
+			#elif __WINDOWS__
+				...
 			#endif
 			===================================================================
 			please don't undefine this constant.
 		-->
-		<DefineConstants Condition="'$(OS)' == 'unix'">
-			__LINUX__
-		</DefineConstants>
-		<DefineConstants Condition="'$(OS)' == 'windows'">
-			__WINDOWS__
-		</DefineConstants>
+		<DefineConstants Condition="'$(OS)' == 'unix'">__LINUX__</DefineConstants>
+		<DefineConstants Condition="'$(OS)' == 'windows'">__WINDOWS__</DefineConstants>
 	</PropertyGroup>
     <ItemGroup>
         <None Remove="Icon.ico" />
