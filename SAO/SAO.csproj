@@ -5,7 +5,7 @@
 		<PublishSingleFile>true</PublishSingleFile>
 		<SelfContained>true</SelfContained>
 		<RuntimeIdentifier Condition="'$(OS)' == 'unix'">linux-x64</RuntimeIdentifier>
-		<RuntimeIdentifier Condition="'$(OS)' == 'windows'">win-x64</RuntimeIdentifier>
+		<RuntimeIdentifier Condition="'$(OS)' == 'Windows_NT'">win-x64</RuntimeIdentifier>
 		<PublishTrimmed>true</PublishTrimmed>
 		<PublishReadyToRun>true</PublishReadyToRun>
 		<AssemblyName>SAO</AssemblyName>
