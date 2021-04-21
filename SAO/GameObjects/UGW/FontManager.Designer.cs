@@ -24,24 +24,24 @@ namespace SAO.GameObjects.UGW
 			this._old_story_bold_italic 	= _generate();
 			this._sao_bold					= _generate();
 			this._sao_regular				= _generate();
-			this._sans_noto_regular			= _generate();
+			this._noto_sans_regular			= _generate();
 			byte[] _old_story_bold_ 		= _fromRes(OSBFileInRes);
 			byte[] _old_story_bold_italic_	= _fromRes(OSBIFileInRes);
 			byte[] _sao_bold_ 				= _fromRes(SAOTTBoldFileInRes);
 			byte[] _sao_regular_ 			= _fromRes(SAOTTRFileInRes);
-			byte[] _sans_noto_regular_ 		= _fromRes(NSRFileInRes);
+			byte[] _noto_sans_regular_ 		= _fromRes(NSRFileInRes);
 			//---------------------------------------------
 			//add colection fonts:
 			this._old_story_bold?.AddFont(_old_story_bold_);
-			this._old_story_bold?.AddFont(_sans_noto_regular_);
+			this._old_story_bold?.AddFont(_noto_sans_regular_);
 			this._old_story_bold_italic?.AddFont(_old_story_bold_italic_);
-			this._old_story_bold_italic?.AddFont(_sans_noto_regular_);
+			this._old_story_bold_italic?.AddFont(_noto_sans_regular_);
 			this._sao_bold?.AddFont(_sao_bold_);
-			this._sao_bold?.AddFont(_sans_noto_regular_);
+			this._sao_bold?.AddFont(_noto_sans_regular_);
 			this._sao_regular?.AddFont(_sao_regular_);
-			this._sao_regular?.AddFont(_sans_noto_regular_);
-			this._sans_noto_regular?.AddFont(_sans_noto_regular_);
-			this._sans_noto_regular?.AddFont(_sao_bold_);
+			this._sao_regular?.AddFont(_noto_sans_regular_);
+			this._noto_sans_regular?.AddFont(_noto_sans_regular_);
+			this._noto_sans_regular?.AddFont(_sao_bold_);
 			//---------------------------------------------
 			//localFunctions:
 			FontSystem _generate()

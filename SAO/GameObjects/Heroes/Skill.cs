@@ -423,7 +423,6 @@ namespace SAO.GameObjects.Heroes
             };
             File.Copy(imagePath,
                 ThereIsConstants.Path.Datas_Path +
-                ThereIsConstants.Path.DoubleSlash +
                 FirstNameOfImageFile + heroID +
                 OrdinaryFileSeparator +
                 skillIndex + HeroSerialize.EndNameOfFile, true);
