@@ -7,11 +7,11 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using FontStashSharp;
 using WotoProvider.Enums;
 using SAO.Security;
 using SAO.Controls.Moving;
 using XColor = Microsoft.Xna.Framework.Color;
-using XRectangle = Microsoft.Xna.Framework.Rectangle;
 
 namespace SAO.Controls.Elements
 {
@@ -238,7 +238,7 @@ namespace SAO.Controls.Elements
         {
             this.ChangeLocation(this.RealPosition);
         }
-        public override void ChangeFont(in SpriteFont font)
+        public override void ChangeFont(in SpriteFontBase font)
         {
             this._flat?.ChangeFont(in font);
         }

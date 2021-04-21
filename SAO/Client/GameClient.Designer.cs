@@ -71,10 +71,10 @@ namespace SAO.Client
 			this.FirstFlatElement.SetLabelName(FirstLabelNameInRes);
 
 			//fontAndTextAligns:
-			this.FirstFlatElement.ChangeFont(this.FontManager.GetSprite(SAO_SFonts.sao_tt_regular, 19));
-			test.ChangeFont(this.FontManager.GetSprite(SAO_SFonts.sao_tt_regular, 19));
-			_f1.ChangeFont(this.FontManager.GetSprite(SAO_SFonts.sao_tt_regular, 19));
-			_f2.ChangeFont(this.FontManager.GetSprite(SAO_SFonts.sao_tt_regular, 19));
+			this.FirstFlatElement.ChangeFont(this.FontManager.GetSprite(SAO_Fonts.sao_tt_regular, 19));
+			test.ChangeFont(this.FontManager.GetSprite(SAO_Fonts.sao_tt_regular, 19));
+			_f1.ChangeFont(this.FontManager.GetSprite(SAO_Fonts.sao_tt_regular, 19));
+			_f2.ChangeFont(this.FontManager.GetSprite(SAO_Fonts.sao_tt_regular, 19));
 			
 			this.FirstFlatElement.ChangeAlignmation(StringAlignmation.MiddleCenter);
 			test.ChangeAlignmation(StringAlignmation.MiddleCenter);
@@ -154,7 +154,7 @@ namespace SAO.Client
 			//names:
 			this.FirstFlatElement.SetLabelName(FirstLabelNameInRes);
 			//fontAndTextAligns:
-			this.FirstFlatElement.ChangeFont(this.FontManager.GetSprite(SAO_SFonts.sao_tt_regular, 19));
+			this.FirstFlatElement.ChangeFont(this.FontManager.GetSprite(SAO_Fonts.sao_tt_regular, 19));
 			this.FirstFlatElement.ChangeAlignmation(StringAlignmation.MiddleCenter);
 			//priorities:
 			this.FirstFlatElement.ChangePriority(ElementPriority.Normal);
@@ -229,7 +229,7 @@ namespace SAO.Client
 					this.BackGroundTexture = Texture2D.FromStream(GraphicsDevice, m);
 				}
 			}
-			
+			this.GraphicsDM.IsFullScreen = true;
 		}
 		#endregion
 		//-------------------------------------------------
@@ -271,6 +271,10 @@ namespace SAO.Client
 				}
 				// game should always be in the fullscreen mode.
 				this.GraphicsDM.ToggleFullScreen();
+			}
+			else
+			{
+				
 			}
 		}
 

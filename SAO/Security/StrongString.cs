@@ -4,8 +4,7 @@
 // file 'LICENSE', which is part of the source code.
 
 using System;
-using System.Drawing;
-using Microsoft.Xna.Framework.Graphics;
+using FontStashSharp;
 using WotoProvider.Interfaces;
 using SAO.Constants;
 using SAO.GameObjects.WMath;
@@ -334,7 +333,7 @@ namespace SAO.Security
         /// itself, if this <see cref="StrongString"/> contains
         /// special characters; otherwise return fixed-size strong string.
         /// </returns>
-        public StrongString FixMe(SpriteFont f, float maxWidth)
+        public StrongString FixMe(SpriteFontBase f, float maxWidth)
         {
             if (HasSpecial() || confirmedMe())
             {

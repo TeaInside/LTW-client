@@ -4,9 +4,9 @@
 // file 'LICENSE', which is part of the source code.
 
 using System;
-using System.Drawing;
-using System.Drawing.Text;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
+using FontStashSharp;
 using SAO.Client;
 using SAO.Controls;
 using SAO.Constants;
@@ -14,114 +14,182 @@ using SAO.GameObjects.Resources;
 
 namespace SAO.GameObjects.UGW
 {
-    public sealed partial class FontManager : IRes, IDisposable
-    {
-        //-------------------------------------------------
-        #region Constant's Region
-        public const string SAOFontFileNameInRes        = "FirstFontFile_Name";
-        public const string OldStoryFileNameInRes       = "SecondFontFile_Name";
-        public const string OldStoryBoldFileInRes       = "Old Story Bold";
-        public const string OldStoryBoldItalicFileInRes = "Old Story Bold Italic";
-        public const string SAOTTBoldFileInRes          = "SAOWelcomeTT-Bold";
-        public const string SAOTTRegularFileInRes       = "SAOWelcomeTT-Regular";
-        public const string F_M_G                       = @"F_M_G\";
-        public const string FO_DIRECROTEY               = @"\fo\";
-        public const int FontBitmapWidth                = 1024;
-        public const int FontBitmapHeight               = 1024;
-        public const int OLDSTORY_INDEX                 = 0;
-        public const int SAO_INDEX                      = 1;
-        #endregion
-        //-------------------------------------------------
-        #region static Properties Region
-        public static string FoDir
-        {
-            get => ThereIsConstants.Path.Here + FO_DIRECROTEY;
-        }
-        #endregion
-        //-------------------------------------------------
-        #region Properties Region
-        public WotoRes MyRes { get; set; }
-        public GameClient Client { get; }
-        #endregion
-        //-------------------------------------------------
-        #region field's Region
-        private CharacterRange[] _ranges;
-		#if (OLD_SAO)
-        private System.Drawing.Text.PrivateFontCollection _collection;
-		#endif
-        #endregion
-        //-------------------------------------------------
-        #region Constructor's Region
-        private FontManager(GameClient _client)
-        {
-            Client = _client;
-            InitializeComponents();
-        }
-        #endregion
-        //-------------------------------------------------
-        #region Destructor's Region
-        ~FontManager()
-        {
-            Dispose();
-            if (_ranges != null)
-            {
-                _ranges = null;
-            }
-			#if (OLD_SAO)
-            if (_collection != null)
-            {
-                _collection = null;
-            }
-			#endif
-            return;
-        }
-        #endregion
-        //-------------------------------------------------
-        #region Get Method's Region
-        public SpriteFont GetSprite(SAO_SFonts _s_font, float size)
-        {
-            return _s_font switch
-            {
-                SAO_SFonts.sao_tt_bold => BuildFont(SAOTTBoldFileInRes, size),
-                SAO_SFonts.sao_tt_regular => BuildFont(SAOTTRegularFileInRes, size),
-                SAO_SFonts.old_story_bold => BuildFont(OldStoryBoldFileInRes, size),
-                SAO_SFonts.old_story_bold_italic => BuildFont(OldStoryBoldItalicFileInRes, size),
-                _ => null,
-            };
-        }
-		#if (OLD_SAO)
-        public Font GetFont(SAO_Fonts _s_font, float size)
-        {
-            FontFamily f;
-            switch (_s_font)
-            {
-                case SAO_Fonts.old_story_italic_bold:
-                    f = _collection.Families[OLDSTORY_INDEX];
-                    return new Font(f, size, FontStyle.Italic | FontStyle.Bold);
-                case SAO_Fonts.sao_tt_bold:
-                    f = _collection.Families[SAO_INDEX];
-                    return new Font(f, size, FontStyle.Bold);
-                default:
-                    return null;
-            }
-        }
-		#endif
-        #endregion
-        //-------------------------------------------------
-        #region static Method's Region
-        public static FontManager GenerateManager(GameClient _client)
-        {
-            if (_client == null)
-            {
-                return null;
-            }
-            if (_client.FontManager != null)
-            {
-                return _client.FontManager;
-            }
-            return new FontManager(_client);
-        }
-        #endregion
-        //-------------------------------------------------
-    }
+	public sealed partial class FontManager : IRes, IDisposable
+	{
+		//-------------------------------------------------
+		#region Constant's Region
+		/// <summary>
+		/// Old Story Bold File In Res.
+		/// </summary>
+		public const string OSBFileInRes		= "Old Story Bold";
+		/// <summary>
+		/// Old Story Bold Italic File In Res.
+		/// </summary>
+		public const string OSBIFileInRes		= "Old Story Bold Italic";
+		/// <summary>
+		/// SAOTT Bold File In Res.
+		/// </summary>
+		public const string SAOTTBoldFileInRes	= "SAOWelcomeTT-Bold";
+		/// <summary>
+		/// SAOTT Regular File In Res.
+		/// </summary>
+		public const string SAOTTRFileInRes		= "SAOWelcomeTT-Regular";
+		/// <summary>
+		/// Noto Sans Regular File In Res.
+		/// </summary>
+		public const string NSRFileInRes		= "NotoSansJP-Regular";
+		public const string F_M_G						= @"F_M_G\";
+		public const string FO_DIRECROTEY				= @"\fo\";
+		public const int FontBitmapWidth				= 1024;
+		public const int FontBitmapHeight			   	= 1024;
+		public const int OLDSTORY_INDEX				 	= 0;
+		public const int SAO_INDEX					  	= 1;
+		public const int STROKE_AMOUNT					= 1;
+		#endregion
+		//-------------------------------------------------
+		#region static Properties Region
+		public static string FoDir
+		{
+			get => ThereIsConstants.Path.Here + FO_DIRECROTEY;
+		}
+		#endregion
+		//-------------------------------------------------
+		#region Properties Region
+		public WotoRes MyRes { get; set; }
+		public GameClient Client { get; }
+		public int GraphicsLevel { get; }
+		#endregion
+		//-------------------------------------------------
+		#region field's Region
+		private FontSystem _old_story_bold;
+		private FontSystem _old_story_bold_italic;
+		private FontSystem _sao_bold;
+		private FontSystem _sao_regular;
+		private FontSystem _sans_noto_regular;
+		#endregion
+		//-------------------------------------------------
+		#region Constructor's Region
+		private FontManager(GameClient _client, int _level = 2)
+		{
+			Client			= _client;
+			GraphicsLevel	= _level;
+			InitializeComponents();
+		}
+		#endregion
+		//-------------------------------------------------
+		#region Destructor's Region
+		~FontManager()
+		{
+			Dispose();
+		}
+		#endregion
+		//-------------------------------------------------
+		#region Get Method's Region
+		public SpriteFontBase GetSprite(SAO_Fonts _s_font, int size)
+		{
+			switch (_s_font)
+			{
+				case SAO_Fonts.sao_tt_bold:
+				{
+					if (this._sao_bold != null)
+					{
+						return this._sao_bold.GetFont(size);
+					}
+					break;
+				}
+				case SAO_Fonts.sao_tt_regular:
+				{
+					if (this._sao_bold != null)
+					{
+						return this._sao_bold.GetFont(size);
+					}
+					break;
+				}
+				case SAO_Fonts.old_story_bold:
+				{
+					if (this._sao_bold != null)
+					{
+						return this._sao_bold.GetFont(size);
+					}
+					break;
+				}
+				case SAO_Fonts.old_story_bold_italic:
+				{
+					if (this._sao_bold != null)
+					{
+						return this._sao_bold.GetFont(size);
+					}
+					break;
+				}
+				case SAO_Fonts.noto_sans_JP:
+				{
+					if (this._sao_bold != null)
+					{
+						return this._sao_bold.GetFont(size);
+					}
+					break;
+				}
+				default:
+				{
+					// we have to ensure everything goes well, 
+					// so if there is a problem here, we should return a
+					// default font (instead of null) 
+					// which will act in an emergency situation.
+					return _getDefault();
+				}
+			}
+			return null;
+
+			// local functions:
+			SpriteFontBase _getDefault()
+			{
+				if (this._sao_bold != null)
+				{
+					return this._sao_bold.GetFont(size);
+				}
+				return null;
+			}
+		}
+		#endregion
+		//-------------------------------------------------
+		#region static Method's Region
+		/// <summary>
+		///	Generate a new FontManager.
+		/// <summary>
+		public static FontManager GenerateManager(GameClient _client)
+		{
+			// check if client is null or not.
+			// if there is no client, we SHOULD NOT create a new font manager.
+			if (_client == null)
+			{
+				// it means the client is not generated yet, so we should 
+				// return null.
+				return null;
+			}
+			// check if the client alread has another font manager or not.
+			if (_client.FontManager != null)
+			{
+				// it means a font manager has already been created.
+				// so return it instead of creating a new one.
+				return _client.FontManager;
+			}
+			// check if the graphic device of the client
+			// has been created or not, and is disposed or not.
+			if (_client.GraphicsDevice == null || 
+					_client.GraphicsDevice.IsDisposed)
+			{
+				// for creating fonts, we have to use GraphicsDevice
+				// property of the GameClient, which is why it's important
+				// for it to be present and not disposed.
+				// at this rate we can't generate any font manager and will
+				// return null.
+				return null;
+			}
+			// create a new font manager object.
+			// please do NOT set the properties and fields in here.
+			return new FontManager(_client);
+		}
+		#endregion
+		//-------------------------------------------------
+	}
 }

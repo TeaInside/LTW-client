@@ -5,6 +5,7 @@
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using FontStashSharp;
 using SAO.Security;
 using SAO.Controls.Moving;
 using SAO.Controls.Elements;
@@ -162,7 +163,7 @@ namespace SAO.SandBox
         /// the <see cref="SpriteFont"/> value which will be
         /// the default font of this sandbox.
         /// </param>
-        public override void ChangeFont(in SpriteFont font)
+        public override void ChangeFont(in SpriteFontBase font)
         {
             this._flat?.ChangeFont(font);
         }

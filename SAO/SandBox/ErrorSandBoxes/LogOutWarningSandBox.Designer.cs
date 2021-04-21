@@ -41,10 +41,10 @@ namespace SAO.SandBox.ErrorSandBoxes
             this.ExitButton.SetStatus(1);
             this.RetryButton.SetStatus(1);
             //fontAndTextAligns:
-            this.TitleElement.ChangeFont(FontManager.GetSprite(SAO_SFonts.sao_tt_regular, 18));
-            this.BodyElement.ChangeFont(FontManager.GetSprite(SAO_SFonts.sao_tt_regular, 16));
-            this.ExitButton.ChangeFont(FontManager.GetSprite(SAO_SFonts.sao_tt_regular, 15));
-            this.RetryButton.ChangeFont(FontManager.GetSprite(SAO_SFonts.sao_tt_regular, 15));
+            this.TitleElement.ChangeFont(FontManager.GetSprite(SAO_Fonts.sao_tt_regular, 18));
+            this.BodyElement.ChangeFont(FontManager.GetSprite(SAO_Fonts.sao_tt_regular, 16));
+            this.ExitButton.ChangeFont(FontManager.GetSprite(SAO_Fonts.sao_tt_regular, 15));
+            this.RetryButton.ChangeFont(FontManager.GetSprite(SAO_Fonts.sao_tt_regular, 15));
             this.TitleElement.ChangeAlignmation(StringAlignmation.MiddleCenter);
             this.BodyElement.ChangeAlignmation(StringAlignmation.MiddleCenter);
             this.ExitButton.ChangeAlignmation(StringAlignmation.MiddleCenter);

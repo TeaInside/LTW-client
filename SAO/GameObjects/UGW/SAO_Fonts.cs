@@ -7,7 +7,10 @@ namespace SAO.GameObjects.UGW
 {
     public enum SAO_Fonts
     {
-        old_story_italic_bold = 0,
-        sao_tt_bold = 1,
+        sao_tt_bold				= 0,
+        sao_tt_regular			= 1,
+        old_story_bold			= 2,
+        old_story_bold_italic	= 3,
+		noto_sans_JP			= 4,
     }
 }
