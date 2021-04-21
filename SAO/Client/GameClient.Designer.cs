@@ -229,7 +229,7 @@ namespace SAO.Client
 					this.BackGroundTexture = Texture2D.FromStream(GraphicsDevice, m);
 				}
 			}
-			this.GraphicsDM.IsFullScreen = true;
+			
 		}
 		#endregion
 		//-------------------------------------------------
@@ -274,7 +274,7 @@ namespace SAO.Client
 			}
 			else
 			{
-				
+				this.GraphicsDM.ToggleFullScreen();
 			}
 		}
 
