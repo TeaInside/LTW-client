@@ -45,6 +45,15 @@ namespace SAO.GameObjects.Resources
         {
             return base.GetString(name.GetValue());
         }
+		public byte[] GetBytes(StrongString name)
+		{
+			var _r = base.GetObject(name.GetValue());
+			if (_r is byte[] _b)
+			{
+				return _b;
+			}
+			return null;
+		}
         public object GetObject(StrongString name)
         {
             return base.GetObject(name.GetValue());

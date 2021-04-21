@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using FontStashSharp;
 using WotoProvider.Enums;
 using WotoProvider.Interfaces;
 using SAO.Client;
@@ -15,7 +16,6 @@ using SAO.Security;
 using SAO.Constants;
 using SAO.Controls.Moving;
 using SAO.GameObjects.UGW;
-using SAO.GameObjects.WMath;
 using SAO.GameObjects.Resources;
 using XRectangle = Microsoft.Xna.Framework.Rectangle;
 using XPoint	 = Microsoft.Xna.Framework.Point;
@@ -101,7 +101,7 @@ namespace SAO.Controls.Elements
 		/// <summary>
 		/// The Font.
 		/// </summary>
-		public virtual SpriteFont Font { get; protected set; }
+		public virtual SpriteFontBase Font { get; protected set; }
 		/// <summary>
 		/// the texture which should be draw on the background of the element.
 		/// </summary>

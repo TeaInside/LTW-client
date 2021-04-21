@@ -7,7 +7,7 @@ using System.ComponentModel;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SAO.Client;
+using FontStashSharp;
 using WotoProvider.Enums;
 using SAO.SandBox;
 using SAO.Security;
@@ -1067,7 +1067,7 @@ namespace SAO.Controls.Elements
             }
             this.ChangeMovements(movements, this.MoveManager);
         }
-        public virtual void ChangeFont(in SpriteFont font)
+        public virtual void ChangeFont(in SpriteFontBase font)
         {
             ; // do nothing here, you should make this method abstract in the future.
         }

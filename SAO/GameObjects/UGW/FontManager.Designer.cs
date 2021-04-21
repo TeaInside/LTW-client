@@ -3,111 +3,92 @@
 // This file is subject to the terms and conditions defined in
 // file 'LICENSE', which is part of the source code.
 
-using System.Drawing;
-using System.Drawing.Text;
-using Microsoft.Xna.Framework.Graphics;
-using SAO.Client;
-using SAO.Constants;
+using FontStashSharp;
 using SAO.GameObjects.Resources;
 
 namespace SAO.GameObjects.UGW
 {
-    partial class FontManager
-    {
-        //-------------------------------------------------
-        #region Initialize Method's Region
-        private void InitializeComponents()
-        {
-            //---------------------------------------------
-            //news:
-            this.MyRes = new WotoRes(typeof(FontManager));
+	partial class FontManager
+	{
+		//-------------------------------------------------
+		#region Initialize Method's Region
+		/// <summary>
+		/// Initializ the components.
+		/// </summary>
+		private void InitializeComponents()
+		{
+			//---------------------------------------------
+			//news:
+			this.MyRes 						= new WotoRes(typeof(FontManager));
+			this._old_story_bold 			= _generate();
+			this._old_story_bold_italic 	= _generate();
+			this._sao_bold					= _generate();
+			this._sao_regular				= _generate();
+			this._sans_noto_regular			= _generate();
+			byte[] _old_story_bold_ 		= _fromRes(OSBFileInRes);
+			byte[] _old_story_bold_italic_	= _fromRes(OSBIFileInRes);
+			byte[] _sao_bold_ 				= _fromRes(SAOTTBoldFileInRes);
+			byte[] _sao_regular_ 			= _fromRes(SAOTTRFileInRes);
+			byte[] _sans_noto_regular_ 		= _fromRes(NSRFileInRes);
+			//---------------------------------------------
+			//add colection fonts:
+			this._old_story_bold?.AddFont(_old_story_bold_);
+			this._old_story_bold?.AddFont(_sans_noto_regular_);
+			this._old_story_bold_italic?.AddFont(_old_story_bold_italic_);
+			this._old_story_bold_italic?.AddFont(_sans_noto_regular_);
+			this._sao_bold?.AddFont(_sao_bold_);
+			this._sao_bold?.AddFont(_sans_noto_regular_);
+			this._sao_regular?.AddFont(_sao_regular_);
+			this._sao_regular?.AddFont(_sans_noto_regular_);
+			this._sans_noto_regular?.AddFont(_sans_noto_regular_);
+			this._sans_noto_regular?.AddFont(_sao_bold_);
+			//---------------------------------------------
+			//localFunctions:
+			FontSystem _generate()
+			{
+				return FontSystemFactory.CreateStroked(this.Client.GraphicsDevice, 
+					STROKE_AMOUNT, 
+					this.GraphicsLevel * FontBitmapWidth,
+					this.GraphicsLevel * FontBitmapHeight);;
+			}
+			//---------------------------------------------
+		}
+		#endregion
+		//-------------------------------------------------
+		#region Ordinary Method's Region
+		public void Dispose()
+		{
+			if (this.MyRes != null)
+			{
+				this.MyRes = null;
+			}
 			#if (OLD_SAO)
-            if (Universe.IsWindows)
-            {
-                this._collection = new PrivateFontCollection();   
-            }
+			if (this._collection != null)
+			{
+				this._collection = null;
+			}
 			#endif
-            this._ranges = GetRange();
-            //---------------------------------------------
-            //collections:
-            // TODO:
-			#if (OLD_SAO)
-            this._collection?.AddFontFile(FoDir + this.MyRes.GetString(SAOFontFileNameInRes).GetValue());
-            this._collection?.AddFontFile(FoDir + this.MyRes.GetString(OldStoryFileNameInRes).GetValue());
-			#endif
-            //---------------------------------------------
-        }
-		#if (OLD_SAO)
-        private Font BuildFont(FontFamily family, float size, FontStyle style)
-        {
-            return new Font(family, size, style);
-        }
-		#endif
-        /// <summary>
-        /// 8 - 25 => Spacing: 0.0;
-        /// 26 => Spacing : 1.2;
-        /// 27 - 28 => Spacing : 2.4;
-        /// 29 => 3.2;
-        /// 30 => 3.6;
-        /// </summary>
-        /// <param name="resName"></param>
-        /// <param name="size"></param>
-        /// <returns></returns>
-        private SpriteFont BuildFont(string resName, float size)
-        {
-            SpriteFont _font = 
-                this.Client.Content.Load<SpriteFont>(GeneratePath(resName) + ((int)size).ToString());
-            return _font;
-        }
-        private string GeneratePath(string res)
-        {
-            return F_M_G + res + ThereIsConstants.Path.DoubleSlash + res;
-        }
-        private CharacterRange[] GetRange()
-        {
-#if MORE_CHARS
-return new[] 
-            {
-                CharacterRange.BasicLatin,
-                CharacterRange.Latin1Supplement,
-                CharacterRange.LatinExtendedA,
-                CharacterRange.Cyrillic,
-            };
-#else
-            return new[]
-            {
-                CharacterRange.SAO_Chars,
-            };
-#endif
-        }
-        #endregion
-        //-------------------------------------------------
-        #region Ordinary Method's Region
-        public void Dispose()
-        {
-            if (this.MyRes != null)
-            {
-                this.MyRes = null;
-            }
-			#if (OLD_SAO)
-            if (this._collection != null)
-            {
-                this._collection = null;
-            }
-			#endif
-        }
-        public bool Contains(char c)
-        {
-            for (int i = 0; i < _ranges.Length; i++)
-            {
-                if (_ranges[i].Contains(c))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-        #endregion
-        //-------------------------------------------------
-    }
+		}
+		public bool Contains(char c)
+		{
+			return true;
+		}
+		#endregion
+		//-------------------------------------------------
+		#region Get Method's Region
+		/// <summary>
+		/// Get a byte array from the resource manager with 
+		/// the specified name.
+		/// </summary>
+		private byte[] _fromRes(string _name)
+		{
+			if (this.MyRes != null && _name != null)
+			{
+				return this.MyRes.GetBytes(_name);
+			}
+			return null;
+		}
+		#endregion
+		//-------------------------------------------------
+	}
 }
