@@ -260,17 +260,14 @@ namespace SAO.Client
 				// set the game window position to zero.
 				Window.Position = Point.Zero;
 			}
-			// check if we are in windows or not.
-			if (!Universe.IsWindows)
+#if __LINUX__
+			// check if game universe have to check the 
+			// __mmf__ assist file or not.
+			if (!this.GameUniverse._checkFile)
 			{
-
-				// check if game universe have to check the 
-				// __mmf__ assist file or not.
-				if (!GameUniverse._checkFile)
-				{
-					this.GameUniverse._checkFile = true;
-				}
+				this.GameUniverse._checkFile = true;
 			}
+#endif
 			// game should always be in the fullscreen mode.
 			this.GraphicsDM.ToggleFullScreen();
 		}
@@ -287,16 +284,6 @@ namespace SAO.Client
 			//---------------------------------------------
 			//news:
 			this.SpriteBatch = new SpriteBatch(GraphicsDevice);
-			//Fonts = FontSystemFactory.CreateStroked(GraphicsDevice, 1, 4 * 1024, 4 * 1024);
-			//Fonts = FontSystemFactory.CreateStroked(GraphicsDevice, 1, 4 * 1024, 4 * 1024);
-            //Fonts.AddFont(File.ReadAllBytes("Content/fonts/Montserrat-Medium.ttf"));
-			// 
-			//Fonts.AddFont(File.ReadAllBytes("/home/mrwoto/.local/share/fonts/SAO UI.ttf"));
-			//Fonts.AddFont(File.ReadAllBytes("/home/mrwoto/Downloads/Noto_Sans_JP/NotoSansJP-Regular.otf"));
-			//Fonts.AddFont(File.ReadAllBytes("/usr/share/fonts/truetype/kacst/KacstPen.ttf"));
-			//test = Content.Load<SpriteFont>("F_M_G/Ani Regular/Ani Regular18");
-			//test = Content.Load<SpriteFont>("Font1");
-			//Console.WriteLine((int)'傷');
 			//---------------------------------------------
 		}
 		/// <summary>

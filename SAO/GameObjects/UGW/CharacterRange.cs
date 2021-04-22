@@ -38,8 +38,9 @@ namespace SAO.GameObjects.UGW
         public static readonly CharacterRange Katakana =
             new CharacterRange((char)0x30A0, (char)0x30FF);
 
-        public static readonly CharacterRange SAO_Chars =
-            new((char)0x0020, (char)0x07E);
+        public static readonly CharacterRange Kanji =
+            new((char)0x4E00, (char)0x9FBF);
+			// 4e00-9fbf, 3040-309f and 30a0-30ff
         #endregion
         //-------------------------------------------------
         #region Constructor's Region

@@ -193,7 +193,6 @@ namespace SAO.Controls.Elements
 			this.StrongTexture?.Dispose();
 			this.Text = text;
 			this.FixedText = this.Text.FixMe(this.Font, this.Rectangle.Width);
-			this.StrongTexture = GetTextureByText();
 			this.ChangeTextLocation();
 		}
 		protected override Texture2D GetTextureByText()

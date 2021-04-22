@@ -20,6 +20,7 @@ namespace SAO.GameObjects.UGW
 			//---------------------------------------------
 			//news:
 			this.MyRes 						= new WotoRes(typeof(FontManager));
+			this._ranges 					= _getRanges();
 			this._old_story_bold 			= _generate();
 			this._old_story_bold_italic 	= _generate();
 			this._sao_bold					= _generate();
@@ -71,7 +72,14 @@ namespace SAO.GameObjects.UGW
 		}
 		public bool Contains(char c)
 		{
-			return true;
+			for (int i = 0; i < _ranges.Length; i++)
+			{
+				if (_ranges[i].Contains(c))
+				{
+					return true;
+				}
+			}	
+			return false;
 		}
 		#endregion
 		//-------------------------------------------------
@@ -87,6 +95,22 @@ namespace SAO.GameObjects.UGW
 				return this.MyRes.GetBytes(_name);
 			}
 			return null;
+		}
+		private CharacterRange[] _getRanges()
+		{
+			return new[] 
+			{
+				CharacterRange.BasicLatin,
+				CharacterRange.Latin1Supplement,
+				CharacterRange.LatinExtendedA,
+				CharacterRange.LatinExtendedB,
+				CharacterRange.Cyrillic,
+				CharacterRange.CyrillicSupplement,
+				CharacterRange.Hiragana,
+				CharacterRange.Katakana,
+				CharacterRange.Kanji,
+			};
+			
 		}
 		#endregion
 		//-------------------------------------------------
