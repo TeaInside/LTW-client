@@ -881,10 +881,7 @@ namespace SAO.Controls.Elements
                 }
             }
         }
-        public virtual void ChangeText(in StrongString text)
-        {
-            ; //
-        }
+        public abstract void ChangeText(in StrongString text);
         public virtual void ChangeSize(in int w, in int h)
         {
 			var _size = new Point(w, h);
@@ -1067,10 +1064,7 @@ namespace SAO.Controls.Elements
             }
             this.ChangeMovements(movements, this.MoveManager);
         }
-        public virtual void ChangeFont(in SpriteFontBase font)
-        {
-            ; // do nothing here, you should make this method abstract in the future.
-        }
+        public abstract void ChangeFont(in SpriteFontBase font);
         public virtual void ChangeForeColor(in XColor color)
         {
             if (this.ForeColor != color)
@@ -1110,7 +1104,7 @@ namespace SAO.Controls.Elements
                 // passed texture or not
                 if (this.Image != texture)
                 {
-                    // the last Image won't be disposed here!
+                    // the last Image should NOT be disposed here!
                     // if you are not a dumbass and wanna reduce the 
                     // memory usage, you should dispose the image
                     // before changing it!
@@ -1165,14 +1159,7 @@ namespace SAO.Controls.Elements
         /// </summary>
         /// <param name="gameTime"></param>
         public abstract void Update(GameTime gameTime);
-        /// <summary>
-        /// get a <see cref="Texture2D"/> by the <see cref="Text"/>
-        /// property of this graphic element.
-        /// </summary>
-        /// <returns>
-        /// a <see cref="Texture2D"/> which shows the <see cref="Text"/>.
-        /// </returns>
-        protected abstract Texture2D GetTextureByText();
+		
         /// <summary>
         /// Get a Background <see cref="Texture2D"/> by 
         /// specified <see cref="Color"/> for this 
@@ -1203,7 +1190,7 @@ namespace SAO.Controls.Elements
         /// the <see cref="SpriteBatch"/> tool 
         /// which is necessary for drawing the graphic surface.
         /// </param>
-        public abstract void Draw(GameTime gameTime, SpriteBatch spriteBatch);
+        public abstract void Draw(in GameTime gameTime, in SpriteBatch spriteBatch);
         #endregion
         //-------------------------------------------------
     }

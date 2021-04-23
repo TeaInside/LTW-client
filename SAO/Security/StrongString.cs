@@ -8,6 +8,8 @@ using FontStashSharp;
 using WotoProvider.Interfaces;
 using SAO.Constants;
 using SAO.GameObjects.WMath;
+using SAO.GameObjects.UGW;
+using static SAO.Client.Universe;
 // ReSharper disable StringIndexOfIsCultureSpecific.1
 // ReSharper disable InconsistentNaming
 // ReSharper disable SuggestVarOrType_Elsewhere
@@ -33,6 +35,7 @@ namespace SAO.Security
 		// ReSharper disable once InconsistentNaming
 		// ReSharper disable once MemberCanBePrivate.Global
 		public const char SIGNED_CHAR2	  = ' ';
+		public const char SIGNED_CHAR3	  = '、';
 		#endregion
 		//-------------------------------------------------
 		#region fields Region
@@ -41,7 +44,14 @@ namespace SAO.Security
 		private static StrongString _empty;
 		#endregion
 		//-------------------------------------------------
-		#region Properties Region
+		#region static Properties Region
+		public static IDECoderProvider<StrongString, QString> DECoder
+		{
+			get
+			{
+				return ThereIsConstants.AppSettings.DECoder;
+			}
+		}
 		public static StrongString Empty
 		{
 			get
@@ -53,6 +63,20 @@ namespace SAO.Security
 				return _empty;
 			}
 		}
+		public static FontManager Manager
+		{
+			get 
+			{
+				if (ThereIsConstants.Forming.GameClient == null)
+				{
+					return null;
+				}
+				return ThereIsConstants.Forming.GameClient.FontManager;
+			}
+		}
+		#endregion
+		//-------------------------------------------------
+		#region Properties Region
 		public int Length { get => GetValue().Length; }
 		public bool IsDisposed { get => _isDisposed; }
 		#endregion
@@ -101,11 +125,13 @@ namespace SAO.Security
 			{
 				if (first)
 				{
-					return this[0, 1];
+					return 
+						this[DEFAULT_Z_BASE, DEFAULT_A_BASE];
 				}
 				else
 				{
-					return this[Length - 2, 1];
+					return 
+						this[Length - DEFAULT_B_BASE, DEFAULT_A_BASE];
 				}
 				
 			}
@@ -120,13 +146,11 @@ namespace SAO.Security
 		#region Ordinary Methods Region
 		public void ChangeValue(string anotherValue)
 		{
-			_myValue =
-				ThereIsConstants.AppSettings.DECoder.TheEncoderValue.GetBytes(anotherValue);
+			_myValue = DECoder.TheEncoderValue.GetBytes(anotherValue);
 		}
 		public string GetValue()
 		{
-			return
-				ThereIsConstants.AppSettings.DECoder.TheEncoderValue.GetString(_myValue);
+			return DECoder.TheEncoderValue.GetString(_myValue);
 		}
 		public void Dispose()
 		{
@@ -142,7 +166,8 @@ namespace SAO.Security
 			// ReSharper disable once JoinDeclarationAndInitializer
 			StrongString[] strongStrings;
 			var myStrings =
-				GetValue().Split(separator, ThereIsConstants.AppSettings.SplitOption);
+				GetValue().Split(separator, 
+					ThereIsConstants.AppSettings.SplitOption);
 			// ReSharper disable once HeapView.ObjectAllocation.Evident
 			strongStrings = new StrongString[myStrings.Length];
 			for (int i = 0; i < myStrings.Length; i++)
@@ -173,7 +198,7 @@ namespace SAO.Security
 		{
 			for (int i = 0; i < values.Length; i++)
 			{
-				if (IndexOf(values[i]) != -1)
+				if (IndexOf(values[i]) != -DEFAULT_A_BASE)
 				{
 					return true;
 				}
@@ -184,7 +209,7 @@ namespace SAO.Security
 		{
 			for (int i = 0; i < values.Length; i++)
 			{
-				if (IndexOf(values[i]) != -1)
+				if (IndexOf(values[i]) != -DEFAULT_A_BASE)
 				{
 					return true;
 				}
@@ -245,7 +270,8 @@ namespace SAO.Security
 		}
 		public StrongString Substring(in int startIndex)
 		{
-			return Substring(startIndex , Length - startIndex - 1);
+			return Substring(startIndex , 
+								Length - startIndex - DEFAULT_A_BASE);
 		}
 		public StrongString Remove(in char value)
 		{
@@ -255,6 +281,36 @@ namespace SAO.Security
 		{
 			return GetValue().Remove(startIndex, count);
 		}
+		
+		public StrongString RemoveSpecial()
+		{
+			// we need font manager, so check if it's null
+			// or not.
+			if (Manager == null)
+			{
+				// it means font manager is null, 
+				// but don't return null, it's better to
+				// return an Empty strong string.
+				return Empty;
+			}
+			if (!HasSpecial())
+			{
+				return this;
+			}
+			var _s = string.Empty;
+			var _chars = GetValue().ToCharArray();
+			char _c;
+			for (int i = 0; i < _chars.Length; i++)
+			{
+				_c = _chars[i];
+				if (Manager.Contains(_c) || IsSignedChar(_c, true))
+				{
+					_s += _c;
+				}
+			}
+			return _s;
+		}
+
 		/// <summary>
 		/// simply appends a character to the end of the 
 		/// strong string and return that new strong string.
@@ -264,26 +320,55 @@ namespace SAO.Security
 		/// </param>
 		public StrongString Append(in char value)
 		{
-			return GetValue() + value;
+			return this + value;
 		}
 		public StrongString Append(in char value, in bool _check)
 		{
-			return GetValue() + value;
+			if (_check)
+			{
+				if (!_isVerified(in value))
+				{
+					Console.WriteLine("Special." + value.ToString());
+					return this;
+				}
+			}
+			return Append(in value);
 		}
 		
 		public StrongString Append(in string value)
 		{
+			if (string.IsNullOrEmpty(value))
+			{
+				return this;
+			}
 			return GetValue() + value;
 		}
 		
 		public StrongString Append(in string value, in bool _check)
 		{
-			return GetValue() + value;
+			if (string.IsNullOrEmpty(value))
+			{
+				return this;
+			}
+			if (_check)
+			{
+				var _s = value.ToStrong();
+				if (_s.HasSpecial())
+				{
+					_s = _s.RemoveSpecial();
+				}
+				return this + _s;
+			}
+			return Append(in value);
 		}
 
 		public StrongString Append(in string value, in int count)
 		{
-			StrongString myString = Empty;
+			if (string.IsNullOrEmpty(value))
+			{
+				return this;
+			}
+			var myString = Empty;
 			for (int i = 0; i < count; i++)
 			{
 				myString += value;
@@ -293,47 +378,101 @@ namespace SAO.Security
 
 		public StrongString Append(in string value, in int count, in bool _check)
 		{
-			StrongString myString = Empty;
-			for (int i = 0; i < count; i++)
+			if (string.IsNullOrEmpty(value))
 			{
-				myString += value;
+				return this;
 			}
-			return GetValue() + myString;
+			if (_check)
+			{
+				var myString = Empty;
+				var _s = value.ToStrong();
+				if (_s.HasSpecial())
+				{
+					_s = _s.RemoveSpecial();
+				}
+				for (int i = 0; i < count; i++)
+				{
+					myString += _s;
+				}
+			}
+			return Append(in value, in count);
 		}
 
 		public StrongString Append(params string[] values)
 		{
-			string myString = string.Empty;
+			var myString = string.Empty;
 			for (int i = 0; i < values.Length; i++)
 			{
-				myString += values[i];
+				if (!string.IsNullOrEmpty(values[i]))
+				{
+					myString += values[i];
+				}
 			}
 			return GetValue() + myString;
 		}
 
 		public StrongString Append(in bool _check, params string[] values)
 		{
-			string myString = string.Empty;
-			for (int i = 0; i < values.Length; i++)
+
+			if (_check)
 			{
-				myString += values[i];
+				var myString = Empty;
+				StrongString _s;
+				foreach (var _v in values)
+				{
+					if (string.IsNullOrEmpty(_v))
+					{
+						continue;
+					}
+					_s = _v.ToStrong();
+					if (_s.HasSpecial())
+					{
+						_s = _s.RemoveSpecial();
+					}
+					myString += _s;
+				}
+				return this + myString;
 			}
-			return GetValue() + myString;
+			return Append(values);
 		}
 		
 		public StrongString Append(in StrongString value)
 		{
+			if (IsNullOrEmpty(in value))
+			{
+				return this;
+			}
 			return this + value;
 		}
 		
 		public StrongString Append(in StrongString value, in bool _check)
 		{
+			if (IsNullOrEmpty(in value))
+			{
+				return this;
+			}
+			if (_check)
+			{
+				if (value.HasSpecial())
+				{
+					var _s = value.RemoveSpecial();
+					if (IsNullOrEmpty(in _s))
+					{
+						return this;
+					}
+					return this + _s;
+				}
+			}
 			return this + value;
 		}
 
-		public StrongString Append(in StrongString value, int count)
+		public StrongString Append(in StrongString value, in int count)
 		{
-			StrongString myString = string.Empty;
+			if (IsNullOrEmpty(in value))
+			{
+				return this;
+			}
+			var myString = Empty;
 			for (int i = 0; i < count; i++)
 			{
 				myString += value;
@@ -341,44 +480,79 @@ namespace SAO.Security
 			return GetValue() + myString;
 		}
 		
-		public StrongString Append(in StrongString value, int count, in bool _check)
+		public StrongString Append(in StrongString value, in int count, 
+									in bool _check)
 		{
-			StrongString myString = string.Empty;
-			for (int i = 0; i < count; i++)
+			if (IsNullOrEmpty(in value))
 			{
-				myString += value;
+				return this;
 			}
-			return GetValue() + myString;
+			if (_check)
+			{
+				if (value.HasSpecial())
+				{
+					var _s = value.RemoveSpecial();
+					var myString = Empty;
+					if (IsNullOrEmpty(_s))
+					{
+						return this;
+					}
+					for (int i = 0; i < count; i++)
+					{
+						myString += _s;
+					}
+				}
+			}
+			return Append(in value, in count);
 		}
 
 		public StrongString Append(params StrongString[] values)
 		{
-			StrongString myString = Empty;
-			for (int i = 0; i < values.Length; i++)
+			var myString = Empty;
+			foreach (var _s in values)
 			{
-				myString += values[i];
+				if (IsNullOrEmpty(_s))
+				{
+					continue;
+				}
+				myString += _s;
 			}
 			return GetValue() + myString;
 		}
 		
 		public StrongString Append(in bool _check, params StrongString[] values)
 		{
-			StrongString myString = Empty;
-			for (int i = 0; i < values.Length; i++)
+			if (_check)
 			{
-				myString += values[i];
+				var myString = Empty;
+				StrongString _str;
+				foreach (var _s in values)
+				{
+					if (IsNullOrEmpty(in _s))
+					{
+						continue;
+					}
+					// we don't have to check if _s has
+					// special or not, because it will 
+					// check it in the Remove method and
+					// it will return itself if it has no
+					// special characters.
+					_str = _s.RemoveSpecial();
+					myString += _str;
+				}
+				return this + myString;
 			}
-			return GetValue() + myString;
+			return Append(values);
 		}
 
-		public StrongString Append(in char value, int count)
+		public StrongString Append(in char value, in int count)
 		{
 			return Append(value.ToString(), count);
 		}
 		
-		public StrongString Append(in char value, int count, in bool _check)
+		public StrongString Append(in char value, in int count, in bool _check)
 		{
-			return Append(value.ToString(), count);
+			return Append(value.ToString(), in count, in _check);
 		}
 
 		public StrongString ToLower()
@@ -406,7 +580,7 @@ namespace SAO.Security
 		/// the maximum width of the strong string.
 		/// </param>
 		/// <returns>
-		/// itself, if this <see cref="StrongString"/> contains
+		/// Itself, if this <see cref="StrongString"/> contains
 		/// special characters; otherwise return fixed-size strong string.
 		/// </returns>
 		public StrongString FixMe(SpriteFontBase f, float maxWidth)
@@ -434,7 +608,7 @@ namespace SAO.Security
 				bySpace = n.Split(SIGNED_CHAR2.ToString());
 				if (bySpace.Length == 1)
 				{
-					if (confirmed(bySpace[0]))
+					if (confirmed(bySpace[DEFAULT_Z_BASE]))
 					{
 						finalList.Add(lastRString);
 						clear();
@@ -498,7 +672,7 @@ namespace SAO.Security
 									var m = finalList[^1] + SIGNED_CHAR2 + lastRString;
 									if (confirmed(m))
 									{
-										finalList[^1] = m;
+										finalList[^DEFAULT_A_BASE] = m;
 									}
 									else
 									{
@@ -521,7 +695,7 @@ namespace SAO.Security
 								var m = finalList[^1] + SIGNED_CHAR2 + lastRString;
 								if (confirmed(m))
 								{
-									finalList[^1] = m;
+									finalList[^DEFAULT_A_BASE] = m;
 								}
 								else
 								{
@@ -555,15 +729,28 @@ namespace SAO.Security
 				}
 			}
 			return buildMe();
+
+			//local functions:
 			StrongString buildMe()
 			{
-				StrongString myString = Empty;
+				var myString = Empty;
+				var _f = Empty;
 				for (int i = 0; i < finalList.Length; i++)
 				{
-					// var s = finalList[i].GetValue();
-					myString += SIGNED_CHAR1 + finalList[i];
+					_f = finalList[i];
+					if (!IsNullOrEmpty(_f))
+					{
+						if (i == finalList.Length - 1)
+						{
+							if (hasSpaceMe())
+							{
+								myString += _f;
+								break;
+							}
+						}
+						myString += SIGNED_CHAR1 + _f;
+					}
 				}
-				// string test = myString.GetValue();
 				if (hasSpaceMe())
 				{
 					if (!hasSpace(myString))
@@ -571,6 +758,7 @@ namespace SAO.Security
 						myString += SIGNED_CHAR2;
 					}
 				}
+				//Console.WriteLine($"HERE: \"{myString.GetValue()}\"\"{this[^DEFAULT_A_BASE]}\"");
 				return myString;
 			}
 			bool confirmed(in StrongString s)
@@ -591,7 +779,7 @@ namespace SAO.Security
 			}
 			bool hasSpaceMe()
 			{
-				return this[Length - 1] == SIGNED_CHAR2;
+				return this[^DEFAULT_A_BASE] == SIGNED_CHAR2;
 			}
 			void charWorker(StrongString rs)
 			{
@@ -600,8 +788,8 @@ namespace SAO.Security
 					finalList.Add(rs);
 					return;
 				}
-				StrongString frString = Empty;
-				StrongString flastRString = frString;
+				var frString = Empty;
+				var flastRString = frString;
 				var fake_chars = rs.GetValue().ToCharArray();
 				for (int i = 0; i < fake_chars.Length; i++)
 				{
@@ -684,42 +872,55 @@ namespace SAO.Security
 				}
 			}
 			return false;
-
-			//local functions:
-			static bool IsSignedChar(in char c)
+		}
+		public bool IsSignedChar(in int _index)
+		{
+			if (!IsHealthy())
 			{
-				switch (c)
-				{
-					case SIGNED_CHAR1:
-					{
-							return true;
-					}
-					default:
-						return false;
-				}
+				return false;
 			}
+			return IsSignedChar(this[_index]);
+		}
+		private bool _isVerified(in char _c)
+		{
+			if (Manager == null)
+			{
+				return false;
+			}
+			return Manager.Contains(_c) || IsSignedChar(in _c, true);
 		}
 		#endregion
 		//-------------------------------------------------
 		#region static Methods Region
-		public static implicit operator StrongString(string v)
+		public static bool IsSignedChar(in char _c, in bool _u = false)
 		{
-			if (!string.IsNullOrEmpty(v))
+			switch (_c)
 			{
-				return new StrongString(v);
+				case SIGNED_CHAR1:
+				case SIGNED_CHAR2:
+				case SIGNED_CHAR3:
+					return true;
+				case UNSIGNED_CHAR1:
+				case UNSIGNED_CHAR2:
+					return _u;
+				default:
+					return false;
 			}
-			return Empty;
+		}
+		public static bool IsNullOrEmpty(in StrongString _s)
+		{
+			if (_s is null)
+			{
+				return true;
+			}
+			return !_s.IsHealthy();
 		}
 		#endregion
 		//-------------------------------------------------
 		#region overrided Methods Region
 		public override string ToString()
 		{
-#if !DEBUG
-			return GetValue();
-#else
 			return ToStringValue;
-#endif
 		}
 		public override bool Equals(object obj)
 		{
@@ -741,6 +942,14 @@ namespace SAO.Security
 		#endregion
 		//-------------------------------------------------
 		#region Operator's Region
+		public static implicit operator StrongString(string v)
+		{
+			if (!string.IsNullOrEmpty(v))
+			{
+				return new StrongString(v);
+			}
+			return Empty;
+		}
 		public static StrongString operator +(StrongString left, StrongString right)
 		{
 			return left.GetValue() + right.GetValue();
@@ -755,25 +964,25 @@ namespace SAO.Security
 		}
 		public static StrongString operator +(StrongString left, char right)
 		{
-			StrongString s = left;
+			var s = left;
 			switch (right)
 			{
 				case UNSIGNED_CHAR1:
+				{
+					if (s.Length <= 0)
 					{
-						if (s.Length <= 0)
-						{
-							return s;
-						}
-						return s.Remove(s.Length - 1, 1);
+						return s;
 					}
+					return s.Remove(s.Length - 1, 1);
+				}
 				case UNSIGNED_CHAR2:
+				{
+					if (s.Length > 0)
 					{
-						if (s.Length > 0)
-						{
-							s += "\n";
-						}
-						break;
+						s += "\n";
 					}
+					break;
+				}
 				default:
 					s += right.ToString();
 					break;

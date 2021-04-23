@@ -443,7 +443,8 @@ namespace SAO.Client
 
 		private void Window_TextInput(object sender, TextInputEventArgs e)
 		{
-			this.FirstFlatElement.ChangeText(this.FirstFlatElement.Text + e.Character);
+			this.FirstFlatElement.ChangeText(
+				this.FirstFlatElement.Text.Append(e.Character, true));
 		}
 		#endregion
 		//-------------------------------------------------

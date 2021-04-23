@@ -38,7 +38,7 @@ namespace SAO.Controls.Elements
 		#endregion
 		//-------------------------------------------------
 		#region Graphical Method's Region
-		public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+		public override void Draw(in GameTime gameTime, in SpriteBatch spriteBatch)
 		{
 			// check if the batch is null or disposed or not
 			if (spriteBatch == null || spriteBatch.IsDisposed)
@@ -83,32 +83,17 @@ namespace SAO.Controls.Elements
 				spriteBatch.Draw(this.Image, this.ImageRectangle, this.Image.Bounds, this.Tint);
 			}
 			// check if the fixed text is null or healthy.
-			if (this.FixedText != null && this.FixedText.IsHealthy())
+			if (!StrongString.IsNullOrEmpty(this.FixedText))
 			{
-				// it means the fixed text is not null,
-				// nor is it unhealthy.
-				// check if the fixed text contains special
-				// character ot not.
-				if (this.FixedText.HasSpecial())
+				// check if the Font is null or not.
+				if (this.Font != null)
 				{
-					// so the fixed-text has some special characters,
-					// then check if the strong-texture is true or disposed or not.
-					if (this.StrongTexture != null && !this.StrongTexture.IsDisposed)
-					{
-						// it means you can draw the strong-texture,
-						// so draw it using spriteBatch tool with the White tint.
-						spriteBatch.Draw(this.StrongTexture, this.TextLocation, Color.White);
-					}
-				}
-				else
-				{
-					// check if the Font is null or not.
-					if (this.Font != null)
-					{
-						// draw the fixed-text using spriteBatch tool
-						// and specified location.
-						spriteBatch.DrawString(this.Font, this.FixedText.GetValue(), this.TextLocation, this.ForeColor);
-					}
+					// draw the fixed-text using spriteBatch tool
+					// and specified location.
+					spriteBatch.DrawString(this.Font, 
+							this.FixedText.GetValue(), 
+							this.TextLocation, 
+							this.ForeColor);
 				}
 			}
 			// Call the End method of spriteBatch tool.
@@ -190,63 +175,10 @@ namespace SAO.Controls.Elements
 			{
 				return;
 			}
-			this.StrongTexture?.Dispose();
 			this.Text = text;
 			this.FixedText = this.Text.FixMe(this.Font, this.Rectangle.Width);
 			this.ChangeTextLocation();
 		}
-		protected override Texture2D GetTextureByText()
-		{
-#if DRAW_PIC_POLYGON
-
-			DColor back = DColor.FromArgb(170, DColor.Black);
-			float w = Rectangle.Width, h = Rectangle.Height;
-			PointF[] unlimitedPointWorks = new[]
-			{
-				new PointF(w / 6, h / 4), // 0
-				new PointF(w - (w / 6), h / 4), // 1
-				new PointF(w, h / 2), // 2
-				new PointF(w - (w / 6), h - (h / 4)), // 3
-				new PointF(w / 6, h - (h / 4)), // 4
-				new PointF(0, h / 2), // 5
-			};
-			using (var i = new Bitmap(Rectangle.Width, Rectangle.Height))
-			{
-				Graphics g = Graphics.FromImage(i);
-				g.SmoothingMode = SmoothingMode.HighQuality;
-				g.FillPolygon(new SolidBrush(back), unlimitedPointWorks);
-				g.DrawPolygon(new Pen(DColor.WhiteSmoke, 1.25f), unlimitedPointWorks);
-				i.Save(@"C:\Users\mrwoto\Programming\Project\SAO\SAO_IMAGES\f_270220212252.bin", ImageFormat.Png);
-			}
-			if (this.Text != null && this.Text.IsHealthy())
-			{
-				if (this.Text.HasSpecial())
-				{
-					if (!Universe.IsWindows)
-					{
-						return null;
-					}
-					Texture2D t;
-					var g = BigFather.GetGraphics();
-					using (var image = new Bitmap(Rectangle.Width, Rectangle.Height))
-					{
-						g = Graphics.FromImage(image);
-						g.SmoothingMode = SmoothingMode.HighQuality;
-						RectangleF reqt = new RectangleF(TEXT_OFFSET, TEXT_OFFSET, Rectangle.Width, Rectangle.Height);
-						g.DrawString(this.Text.GetValue(), this.GetFont(), this.PaintBrushes[BASE_INDEX], reqt, this.StringFormat);
-						t = image.ToTexture2D();
-						g.Dispose();
-					}
-					return t;
-				}
-			}
-#endif
-			return null;
-		}
-		
-		
-		
-		
 		protected override Texture2D GetBackGroundTexture(Color color)
 		{
 			if (color != Color.Transparent)
@@ -273,8 +205,6 @@ namespace SAO.Controls.Elements
 			}
 			return null;
 		}
-
-
 
 
 		protected override void UpdateGraphics()
@@ -328,11 +258,6 @@ namespace SAO.Controls.Elements
 		{
 			if (this.Font == null || this.FixedText == null)
 			{
-				return;
-			}
-			if (this.Text.HasSpecial())
-			{
-				this.TextLocation = this.Position;
 				return;
 			}
 			var s = this.Font.MeasureString(this.FixedText.GetValue());

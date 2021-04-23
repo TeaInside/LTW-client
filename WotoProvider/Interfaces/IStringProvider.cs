@@ -100,6 +100,7 @@ namespace WotoProvider.Interfaces
 		/// 
 		/// </summary>
         T Remove(in int startIndex, in int count);
+		T RemoveSpecial();
 		/// <summary>
 		/// simply appends a character to the end of the 
 		/// string provider.
@@ -157,12 +158,12 @@ namespace WotoProvider.Interfaces
 		/// 
 		/// 
 		/// </summary>
-        T Append(in T value, int count);
+        T Append(in T value, in int count);
 		/// <summary>
 		/// 
 		/// 
 		/// </summary>
-        T Append(in T value, int count, in bool _check);
+        T Append(in T value, in int count, in bool _check);
 		/// <summary>
 		/// 
 		/// 
@@ -177,12 +178,18 @@ namespace WotoProvider.Interfaces
 		/// 
 		/// 
 		/// </summary>
-        T Append(in char value, int count);
+        T Append(in char value, in int count);
 		/// <summary>
 		/// 
 		/// 
 		/// </summary>
-        T Append(in char value, int count, in bool _check);
+        T Append(in char value, in int count, in bool _check);
+		/// <summary>
+		/// 
+		/// 
+		/// </summary>
+		bool HasSpecial();
+		bool IsSignedChar(in int _index);
         #endregion
         //-------------------------------------------------
     }
