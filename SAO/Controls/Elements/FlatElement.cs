@@ -24,7 +24,6 @@ namespace SAO.Controls.Elements
         #endregion
         //-------------------------------------------------
         #region Properties Region
-        public Texture2D StrongTexture { get; protected set; }
         public StrongString FixedText { get; protected set; }
         public Vector2 TextLocation { get; protected set; }
         public StringAlignmation Alignmation { get; protected set; }

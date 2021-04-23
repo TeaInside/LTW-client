@@ -31,8 +31,10 @@ namespace SAO.Client
 		/// </summary>
 		public const string ToStringValue = "UNIVERSE_MANAGER -- SAO";
 		public const string UnknownCommandError = "ERR: Unknown Command Entered: ";
-		public const string Config_File_Name = "UNIVERSE_CONFIG" + ThereIsConstants.Path.FilesEnd_Name;
-		public const string Config_Filter = "*" + ThereIsConstants.Path.FilesEnd_Name;
+		public const string Config_File_Name = 
+			"UNIVERSE_CONFIG" + ThereIsConstants.Path.FilesEnd_Name;
+		public const string Config_Filter = 
+			"*" + ThereIsConstants.Path.FilesEnd_Name;
 		public const string DEFAULT_CONFIG_TEXT = "-- SAO UNIVERSE -- V1.0.0";
 		public const string CONFIG_UP_COMMAND = "universe_request(up)";
 		public const string CONFIG_CLOSE_COMMAND1 = "close";
@@ -42,8 +44,9 @@ namespace SAO.Client
 		public const string CONFIG_CLOSE_COMMAND5 = "/close";
 		public const string CONFIG_CLOSE_COMMAND6 = "/close --f";
 		public const string CONFIG_CLOSE_COMMAND7 = "/close -force";
-		public const int DEFAULT_Z_BASE		   = 0;
-		public const ushort MAX_CHECK			 = 60;
+		public const int DEFAULT_Z_BASE		   = 0b0;
+		public const int DEFAULT_A_BASE		   = 0b1;
+		public const int DEFAULT_B_BASE		   = 0b10;
 		#endregion
 		//-------------------------------------------------
 		#region Properties Region

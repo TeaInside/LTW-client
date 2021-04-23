@@ -38,7 +38,6 @@ namespace SAO.GameObjects.UGW
 		/// Noto Sans Regular File In Res.
 		/// </summary>
 		public const string NSRFileInRes		= "NotoSansJP-Regular";
-		public const string F_M_G						= @"F_M_G\";
 		public const int FontBitmapWidth				= 1024;
 		public const int FontBitmapHeight			   	= 1024;
 		public const int OLDSTORY_INDEX				 	= 0;
@@ -57,6 +56,7 @@ namespace SAO.GameObjects.UGW
 		#endregion
 		//-------------------------------------------------
 		#region field's Region
+		private CharacterRange[] _ranges;
 		private FontSystem _old_story_bold;
 		private FontSystem _old_story_bold_italic;
 		private FontSystem _sao_bold;
