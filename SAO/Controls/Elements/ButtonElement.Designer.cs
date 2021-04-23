@@ -53,7 +53,7 @@ namespace SAO.Controls.Elements
         #endregion
         //-------------------------------------------------
         #region Graphical Method's Region
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public override void Draw(in GameTime gameTime, in SpriteBatch spriteBatch)
         {
             // check if the batch is null or disposed or not
             if (spriteBatch == null || spriteBatch.IsDisposed)
@@ -73,10 +73,6 @@ namespace SAO.Controls.Elements
         #endregion
         //-------------------------------------------------
         #region overrided Method's Region
-        protected override Texture2D GetTextureByText()
-        {
-            return null;
-        }
         protected override Texture2D GetBackGroundTexture(XColor color)
         {
 #if BUTTON_BACKGROUND
