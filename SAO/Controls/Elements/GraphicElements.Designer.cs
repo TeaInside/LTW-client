@@ -644,7 +644,6 @@ namespace SAO.Controls.Elements
 				}
 				this.IsLeftDown = true;
 				this.LeftDownOnce = true;
-				System.Console.WriteLine($"HERE before:{_p.Value}");
 				this.OnLeftDown();
 				return;
 			}
