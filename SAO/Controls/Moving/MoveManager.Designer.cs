@@ -33,7 +33,7 @@ namespace SAO.Controls.Moving
             {
                 if (_e != null)
                 {
-                    if (!_e.IsDisposed)
+                    if (!_e.IsDisposed && _e.Visible)
                     {
                         _e.MoveMe();
                     }
@@ -122,7 +122,15 @@ namespace SAO.Controls.Moving
         #region Event Method's Region
         private void Activated_MouseMove(object sender, EventArgs e)
         {
-            if (this.Enabled)
+			if (this.Activated == null || sender != this.Activated)
+			{
+				return;
+			}
+			if (this.Activated.IsDisposed || !this.Activated.Visible)
+			{
+				return;
+			}
+            if (this.Enabled && this.IsShocked)
             {
                 if (this.MustDown)
                 {

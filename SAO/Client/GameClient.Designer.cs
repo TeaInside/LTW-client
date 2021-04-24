@@ -359,28 +359,28 @@ namespace SAO.Client
 					case RequestType.None:
 						break;
 					case RequestType.Activate:
+					{
+						try
 						{
-							try
-							{
-								this.Universe_Request = false;
-								this.Request = RequestType.None;
-								// this.GameUniverse.WotoPlanet?.Show();
-								// this.GameUniverse.WotoPlanet?.BringToFront();
-								// this.GameUniverse.WotoPlanet?.Activate();
-								// this.GameUniverse.WotoPlanet?.Focus();
-								this.GraphicsDM.ToggleFullScreen();
-							}
-							catch
-							{
-								// the activating was not successful,
-								// so what should we do??
-								// here was the last step that we could avtive the
-								// holy planet of woto, but it failed, 
-								// it means there is no further steps.
-								// so the story will end right here right now.
-							}
-							break;
+							this.Universe_Request = false;
+							this.Request = RequestType.None;
+							// this.GameUniverse.WotoPlanet?.Show();
+							// this.GameUniverse.WotoPlanet?.BringToFront();
+							// this.GameUniverse.WotoPlanet?.Activate();
+							// this.GameUniverse.WotoPlanet?.Focus();
+							this.GraphicsDM.ToggleFullScreen();
 						}
+						catch
+						{
+							// the activating was not successful,
+							// so what should we do??
+							// here was the last step that we could avtive the
+							// holy planet of woto, but it failed, 
+							// it means there is no further steps.
+							// so the story will end right here right now.
+						}
+						break;
+					}
 					default:
 						break;
 				}
@@ -408,6 +408,7 @@ namespace SAO.Client
 			{
 				if (this.IsLeftDown)
 				{
+					this.LeftDownPoint = null;
 					this.IsLeftDown = false;
 				}
 			}
@@ -415,6 +416,7 @@ namespace SAO.Client
 			{
 				if (this.IsRightDown)
 				{
+					this.RightDownPoint = null;
 					this.IsRightDown = false;
 				}
 			}

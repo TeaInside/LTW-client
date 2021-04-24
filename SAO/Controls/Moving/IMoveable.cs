@@ -14,6 +14,7 @@ namespace SAO.Controls.Moving
         //-------------------------------------------------
         #region Properties Region
         bool IsDisposed { get; }
+		bool Visible { get; }
         Vector2 LastPoint { get; }
         ElementMovements Movements { get; }
         IMoveManager MoveManager { get; }

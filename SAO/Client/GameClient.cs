@@ -61,8 +61,10 @@ namespace SAO.Client
         internal RequestType Request { get; set; }
         internal MouseState LastMouseState { get; private set; }
         internal MouseState CurrentState { get; private set; }
-        internal Point LeftDownPoint { get; private set; }
-        internal Point RightDownPoint { get; private set; }
+	#nullable enable
+        internal Point? LeftDownPoint { get; private set; }
+        internal Point? RightDownPoint { get; private set; }
+	#nullable disable
         //public SoundPlayer SoundPlayer { get; set; }
         public int Width
         {
