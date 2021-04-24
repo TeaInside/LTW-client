@@ -328,7 +328,6 @@ namespace SAO.Security
 			{
 				if (!_isVerified(in value))
 				{
-					Console.WriteLine("Special." + value.ToString());
 					return this;
 				}
 			}
@@ -758,7 +757,6 @@ namespace SAO.Security
 						myString += SIGNED_CHAR2;
 					}
 				}
-				//Console.WriteLine($"HERE: \"{myString.GetValue()}\"\"{this[^DEFAULT_A_BASE]}\"");
 				return myString;
 			}
 			bool confirmed(in StrongString s)
