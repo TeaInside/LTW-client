@@ -12,8 +12,6 @@ using LTW.Constants;
 using LTW.GameObjects.UGW;
 using LTW.Controls.Elements;
 using LTW.GameObjects.Resources;
-using LTW.GameObjects.UGW;
-using LTW.GameObjects.WMath;
 using Point = Microsoft.Xna.Framework.Point;
 
 namespace LTW.Client
