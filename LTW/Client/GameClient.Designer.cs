@@ -202,24 +202,6 @@ namespace LTW.Client
 			this.GameUniverse.MouseUp		+= WotoPlanet_MouseUp;
 			this.Window.TextInput			+= Window_TextInput;
 			//---------------------------------------------
-			#if !SETVER_TEST
-			System.Net.Http.HttpClient test = new System.Net.Http.HttpClient();
-			test.BaseAddress = new Uri("https://ltw-game.herokuapp.com");
-			System.Net.Http.HttpRequestMessage ro = new System.Net.Http.HttpRequestMessage();
-			ro.Headers.Add("test", "    HELLO!!!!!!!");
-			var _res = test.Send(ro);
-
-			Stream receiveStream = _res.Content.ReadAsStream();
-			StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
-			var text1 = readStream.ReadToEnd();
-
-			ro = new System.Net.Http.HttpRequestMessage();
-			_res = test.Send(ro);
-
-			receiveStream = _res.Content.ReadAsStream();
-			readStream = new StreamReader(receiveStream, Encoding.UTF8);
-			var text2 = readStream.ReadToEnd();
-			#endif
 		}
 		/// <summary>
 		/// Load the Main Form Background of the game.
@@ -428,6 +410,11 @@ namespace LTW.Client
 				{
 					this.LeftDownPoint = null;
 					this.IsLeftDown = false;
+					if (GraphicElements.LockedElement != null)
+					{
+						GraphicElements.LockedElement?.UnLockMouse();
+						GraphicElements.LockedElement = null;
+					}
 				}
 			}
 			else if (e.Button == MouseButtons.Right)
